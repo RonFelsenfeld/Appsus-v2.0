@@ -9,6 +9,8 @@ import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 
 import { noteService } from "../services/note.service.js"
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+
 
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
@@ -39,8 +41,15 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     }
 
 
-
-
+    function onCopyClick(note) {
+        console.log(note);
+        const duplicateNote = { ...note, id: '', createdAt: Date.now() }
+        noteService.save(duplicateNote)
+        .then(() => {
+            showSuccessMsg('whhhhhwoooo')
+        })
+        .catch(err => showErrorMsg('hell naw'))
+    }
 
 
     // console.log(cmpType);
@@ -70,11 +79,10 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
         }
 
         <div className="note-actions flex space-around">
-            <button onClick={() => { setIsColorPicker((prevIsClr) => !prevIsClr) }} >color</button>
-            <button>img</button>
-            <button>copy</button>
-            <button>email</button>
-            <button className="note-remove-btn" onClick={() => { onRemoveNote(note.id) }}>x</button>
+            <a className="fa color" onClick={() => { setIsColorPicker((prevIsClr) => !prevIsClr) }} ></a>
+            <a onClick={() => onCopyClick(note)} className="fa copy"></a>
+            <a className="fa mail"></a>
+            <a className="note-remove-btn fa trash" onClick={() => { onRemoveNote(note.id) }}></a>
         </div>
 
     </div >

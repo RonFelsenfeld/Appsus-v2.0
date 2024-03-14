@@ -6,11 +6,11 @@ const { useParams } = ReactRouter
 
 import { NotePreview } from "../cmps/NotePreview.jsx"
 import { NoteFilter } from "../cmps/NoteFIlter.jsx"
-// import { NoteTxt } from "../cmps/NoteTxt.jsx"
+
 
 import { noteService } from "../services/note.service.js"
 import { AddNote } from "../cmps/AddNote.jsx"
-import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
@@ -22,17 +22,7 @@ export function NoteIndex() {
     useEffect(() => {
         loadNotes()
     }, [])
-    
-    
-    
-    // function notesSort(notes) {
-        //     notes.sort((note1,note2)=> (note1.isPinned+"").localeCompare(note2.isPinned+"")).reverse()
-        //     console.log(notes);
-        //     return notes
-        // }
-        
-        
-        
+            
         function loadNotes() {
             noteService.query()
             .then((notes) => {
@@ -56,10 +46,9 @@ export function NoteIndex() {
     function addNote(note) {
         noteService.save(note)
             .then((updatedNote) => {
-                setNotes(prevNotes => [{ ...updatedNote }, ...prevNotes])
-                showSuccessMsg(`adding ${note.title}`)
+                setNotes(prevNotes => [updatedNote , ...prevNotes])
+                showSuccessMsg(`adding`)
             })
-
             .catch(err => {
                 console.log(err)
                 showErrorMsg('already have it.', err)

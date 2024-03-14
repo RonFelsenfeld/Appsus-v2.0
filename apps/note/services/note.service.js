@@ -11,6 +11,7 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
+    getEmptyAllNote
     // getDefaultFilter,
     // getFilterFromParams
 }
@@ -39,12 +40,11 @@ function remove(noteId) {
 }
 
 function save(note) {
-    // console.log(note)
     if (note.id) {
+        console.log(note)
         return storageService.put(NOTE_KEY, note)
     } else {
-
-        return storageService.post(NOTE_KEY, getEmptyNote(note.title, note.txt))
+        return storageService.post(NOTE_KEY, getEmptyNote())
     }
 }
 
@@ -62,6 +62,18 @@ function getEmptyNote(title = '', txt = '') {
             title,
             txt
         }
+    }
+}
+function getEmptyAllNote() {
+    return {
+        id: '',
+        createdAt: new Date(),
+        type: '',
+        isPinned: false,
+        style: {
+            backgroundColor: '#f6f8fc',
+        },
+        info: null
     }
 }
 function getEmptyImgNote() {

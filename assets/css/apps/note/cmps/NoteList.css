@@ -1,45 +1,70 @@
-
-
- .fa.pin::before{
+.fa.pin::before {
     font-family: faRegular;
     content: "\f005";
     font-size: 1.5em;
 }
 
-.fa.unPin::after{
+.fa.unPin::after {
     font-family: faSolid;
-    content:"\f005" ;
+    content: "\f005";
     font-size: 1.5em;
 }
 
-.fa.edit::before{
+.fa.edit::before {
     font-family: faRegular;
-    content:"\f044" ;
+    content: "\f044";
     font-size: 1.2em;
 }
 
-.fa.img::before{
-     font-family: faRegular;
-     content:"\f03e" ;
-     font-size: 2em;
-     
-    }
-    
-    .fa.video::before{
-        font-family: faSolid;
-        content:"\f008" ;
-        font-size: 2em;
-        
-    }
-    .fa.todo::before{
-        font-family: faSolid;
-        content:"\f03a" ;
-        font-size: 2em;
-        
-    }
-    .fa.txt::before{
-     font-family: faSolid;
-     content:"\f031" ;
-     font-size: 2em;
+.fa.img::before {
+    font-family: faRegular;
+    content: "\f03e";
+    font-size: 2em;
 
- }
+}
+
+.fa.video::before {
+    font-family: faSolid;
+    content: "\f008";
+    font-size: 2em;
+
+}
+
+.fa.todo::before {
+    font-family: faSolid;
+    content: "\f03a";
+    font-size: 2em;
+
+}
+
+.fa.txt::before {
+    font-family: faSolid;
+    content: "\f031";
+    font-size: 2em;
+
+}
+.fa.copy::before {
+    font-family: faSolid;
+    content: "\f24d";
+    font-size: 2em;
+    
+}
+
+.fa.color::before{
+    font-family: faSolid;
+    content: "\f55d";
+    font-size: 2em;
+
+}
+.fa.mail::before{
+    font-family: faSolid;
+    content: "\f0e0";
+    font-size: 2em;
+
+}
+.fa.trash::before{
+    font-family: faSolid;
+    content: "\f2ed";
+    font-size: 2em;
+
+}
