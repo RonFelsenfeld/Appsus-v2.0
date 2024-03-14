@@ -50,6 +50,10 @@
   background: transparent;
 }
 
+.folder-container .unread-count {
+  margin-inline-start: 4em;
+}
+
 .folder-list .btn-compose::before {
   font-family: faSolid;
   content: '\f303';

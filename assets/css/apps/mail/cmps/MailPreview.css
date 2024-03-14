@@ -1,5 +1,5 @@
 .mail-preview {
-  grid-template-columns: repeat(4, 1fr) 30px;
+  grid-template-columns: 50px 200px 1fr 100px;
   align-items: center;
 
   padding: 0.5em;
@@ -12,10 +12,34 @@
   cursor: pointer;
 }
 
-.mail-preview .mail-body {
+.mail-preview > * {
+  max-height: 20px;
+}
+
+.mail-preview .btn-star {
+  background-color: transparent;
+  border: none;
+}
+
+.mail-preview .btn-star::before {
+  font-family: faRegular;
+  content: '\f005';
+  font-size: 1em;
+}
+
+.mail-preview .mail-content-container {
   font-family: RobotoRegular;
-  white-space: nowrap;
-  overflow: hidden;
+
+  line-height: 1.5;
+  overflow-y: hidden;
+}
+
+.mail-preview .mail-content-container .mail-subject {
+  color: var(--main-fn-color);
+}
+
+.mail-preview .mail-content-container .mail-body {
+  color: var(--clr-gray2);
 }
 
 .mail-preview .mail-sent-at {

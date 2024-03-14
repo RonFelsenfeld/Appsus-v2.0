@@ -1,7 +1,12 @@
 const { useState, useEffect } = React
 const { useNavigate } = ReactRouter
 
-export function MailFolderList({ onComposeMail, onSetFilter, filterBy }) {
+export function MailFolderList({
+  onComposeMail,
+  onSetFilter,
+  filterBy,
+  unreadCount,
+}) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
   const navigate = useNavigate()
 
@@ -29,6 +34,7 @@ export function MailFolderList({ onComposeMail, onSetFilter, filterBy }) {
           onClick={() => handleFolderChange('inbox')}
         >
           Inbox
+          <span className="unread-count">{unreadCount}</span>
         </button>
 
         <button

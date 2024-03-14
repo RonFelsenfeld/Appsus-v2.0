@@ -34,7 +34,7 @@ export function MailIndex() {
       .query(filterBy, sortBy)
       .then(mails => {
         setMails(mails)
-        calcUnread()
+        if (filterBy.folder === 'inbox' && !filterBy.txt) calcUnread()
       })
       .catch(err => console.error('Had issues with loading mails', err))
   }
@@ -137,6 +137,7 @@ export function MailIndex() {
         onComposeMail={() => setIsComposingMail(true)}
         onSetFilter={onSetFilter}
         filterBy={{ folder }}
+        unreadCount={unreadCount}
       />
 
       {!mailId && (
@@ -156,9 +157,6 @@ export function MailIndex() {
               onSetSortBy={onSetSortBy}
               sortBy={sortBy}
             />
-            {filterBy.folder === 'inbox' && (
-              <p className="unread">Unread: {unreadCount}</p>
-            )}
           </div>
         </Fragment>
       )}

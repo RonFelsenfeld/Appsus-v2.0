@@ -1,0 +1,39 @@
+.sort-section {
+  padding: 0.5em;
+  background-color: var(--clr-gray1);
+  gap: 1em;
+}
+
+.sort-section .btn {
+  position: relative;
+  border-radius: 2em;
+  border: none;
+  padding: 1em;
+
+  font-family: RobotoBold;
+  background-color: white;
+}
+
+.sort-section .btn:hover {
+  background-color: var(--clr-gray-1);
+}
+
+.sort-section .btn:is(.sort-up, .sort-down) {
+  padding-inline-end: 2.6em;
+}
+
+.sort-section .btn::after {
+  position: absolute;
+  right: 1em;
+
+  font-size: 1em;
+  font-family: faSolid;
+}
+
+.sort-section .sort-up::after {
+  content: '\f176';
+}
+
+.sort-section .sort-down::after {
+  content: '\f175';
+}

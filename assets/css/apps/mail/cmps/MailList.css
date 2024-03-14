@@ -4,37 +4,6 @@
   margin-block-end: 0.5em;
 }
 
-.list-header {
-  grid-template-columns: repeat(4, 1fr) 30px;
-  align-items: center;
-
-  padding: 0.5em;
-  font-size: 1.4em;
-  font-family: RobotoBold;
-
-  background-color: var(--clr-gray1);
-  cursor: pointer;
-}
-
-.list-header .sent-at-title {
-  justify-self: end;
-  padding-inline-end: 1em;
-}
-
-.list-header > *:is(.sort-up, .sort-down)::after {
-  font-family: faSolid;
-  font-size: 1em;
-  margin-inline-start: 0.5em;
-}
-
-.list-header .sort-up::after {
-  content: '\f176';
-}
-
-.list-header .sort-down::after {
-  content: '\f175';
-}
-
 .no-mails-msg,
 .unread {
   font-size: 2em;
