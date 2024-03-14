@@ -53,11 +53,11 @@ export function NoteIndex() {
             })
     }
 
+//TODO need to get currect note
     function onUpdateNote(note) {
         noteService.save(note)
-        .then(()=>{
-            setNotes((prevNotes) => prevNotes.map((currNote) => currNote.id === note.id ? note : currNote))
-            // setNotes((prevNotes) => prevNotes.filter((currNote) => currNote.id === note.id ? note : currNote))
+        .then((savedNote)=>{
+            setNotes((prevNotes) => prevNotes.map((currNote) => currNote.id === savedNote.id ? savedNote : currNote))
         })
     }
 

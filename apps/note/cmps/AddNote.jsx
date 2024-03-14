@@ -31,14 +31,14 @@ export function AddNote({ addNote }) {
                 onChange={handleChange}
                 value={newNote.title}
             />
-            <input
+            {/* <input
                 placeholder="Note text.."
                 type="text"
                 id="txt"
                 name="txt"
                 onChange={handleChange}
                 value={newNote.txt}
-            />
+            /> */}
 
             <button>add</button>
         </form>

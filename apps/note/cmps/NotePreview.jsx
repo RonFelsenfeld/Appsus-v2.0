@@ -7,35 +7,38 @@ import { noteService } from "../services/note.service.js"
 
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
-    const [noteStyle, setNoteStyle] = useState({ backgroundColor: note.style.backgroundColor })
     const [isEditing, setIsEditing] = useState(false)
     const [isColorPicker, setIsColorPicker] = useState(false)
-    // const [newNote, setNewNote] = useState(note)
-    // const [isPinned, setIsPinned] = useState(false)
+    const [noteToEdit, setNoteToEdit] = useState(note)
+    const [noteIsPinned, setNoteIsPinned] = useState(false)
 
-
-    useEffect(() => {
-    }, [noteStyle])
-
-    function onChangeStyle(newStyle) {
-        setNoteStyle((prevStyle) => ({ ...prevStyle, ...newStyle }))
-        // onUpdateNoteStyle(newStyle, note)
-
+    function onChangeColor(color) {
+        note.style.backgroundColor = color
+        noteService.save(note)
+            .then((savedNote) => {
+                setNoteToEdit({ ...savedNote })
+                setIsColorPicker(false)
+            })
     }
 
-    // function onUpdateNoteStyle(noteStyle, note) {
-    //     setNewNote((oldNote => ({ ...oldNote, [note.style]: noteStyle })))
-    //     onUpdateNote(newNote)
-    // }
+    function onPinClick() {
+        // console.log(note);
+        setNoteIsPinned((prevNoteIsPinned) => !prevNoteIsPinned)
+        note.isPinned = noteIsPinned
+        console.log(note.isPinned)
+    }
 
-    return <div onClick={() => setIsEditing(true)} style={noteStyle} className="note-preview flex space-between column">
+
+
+    return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }} className="note-preview flex space-between column">
+
+        <button className="pin" onClick={onPinClick}>pin</button>
 
         {!isEditing && <React.Fragment>
             <h2>{note.info.title}</h2>
             <h2>{note.info.txt}</h2>
         </React.Fragment>
         }
-
 
         {
             isEditing && <EditNote
@@ -47,12 +50,8 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
         {
             isColorPicker && <ColorInput
-                setIsEditing={setIsEditing}
-                note={note}
-                setIsColorPicker={setIsColorPicker}
-                onUpdateNote={onUpdateNote}
-                noteStyle={noteStyle}
-                onChangeStyle={onChangeStyle} />
+                noteToEdit={noteToEdit}
+                onChangeColor={onChangeColor} />
         }
 
         <div className="note-actions flex space-around">

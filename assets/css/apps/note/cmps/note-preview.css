@@ -12,24 +12,26 @@
     box-shadow: 0px 3px 4px rgba(0, 0, 0, .35);
     cursor: pointer;
 }
-.note-preview:hover .note-actions{
-opacity: 1;
+
+.note-preview:hover .note-actions {
+    opacity: 1;
 }
 
 .note-preview h2 {
     padding: 0.8em 1.06em 0;
 }
 
-.note-info-txt{
+.note-info-txt {
     padding: 0.8em 1.06em;
 }
 
-.note-actions{
-   opacity: 0;
-   transition: .28s;
+.note-actions {
+    opacity: 0;
+    transition: .28s;
 }
 
-
-
-
-
+.pin {
+    position: absolute;
+    right: .5em;
+    top: .5em
+}

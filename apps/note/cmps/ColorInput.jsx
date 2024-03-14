@@ -1,6 +1,6 @@
 
 
-export function ColorInput({ onChangeStyle, noteStyle, setIsColorPicker, onUpdateNote, note }) {
+export function ColorInput({ onChangeColor, noteToEdit, }) {
     const colors = [
         'rgb(174, 204, 220)',
         '#B4FF9F',
@@ -12,24 +12,14 @@ export function ColorInput({ onChangeStyle, noteStyle, setIsColorPicker, onUpdat
         'rgb(246, 226, 221)'
     ]
 
-    function onSetColor(color) {
-        const style = { backgroundColor: color }
-        onChangeStyle(style)
-    }
 
-    function closeColorInput(color) {
-        onSetColor(color)
-        setIsColorPicker(false)
-
-        onUpdateNote(note)
-    }
-
+    console.log(noteToEdit);
     return <section className="color-input">
         <div className="items-container flex space-around">
             {
                 colors.map(color => <div key={color}
-                    className={`item  + ${color === noteStyle.backgroundColor ? 'selected' : ''}`}
-                    onClick={() => closeColorInput(color)}
+                    className={`item  + ${color === noteToEdit.style.backgroundColor ? 'selected' : ''}`}
+                    onClick={() => onChangeColor(color)}
                     style={{ backgroundColor: color }}
                 ></div>)
             }
