@@ -3,24 +3,22 @@ const { useState, useEffect } = React
 export function AddNote({ addNote }) {
     const [newNote, setnewNote] = useState({ title: '', txt: '' })
 
-
-
     function handleChange({ target }) {
         const field = target.name
         const value = target.value
-        // console.log(target);
+
         setnewNote((prevNote) => ({ ...prevNote, [field]: value }))
-        // console.log(newNote);
+
     }
 
     function onAddNote(ev) {
         ev.preventDefault()
         addNote(newNote)
-        // console.log(newNote);
+
     }
 
-    // const { title, txt } = newNote
-    return <div className="add-note-form flex justify-center">
+
+    return <div className="add-note-form flex column space-between">
         <form onSubmit={onAddNote}>
             <label htmlFor="add"></label>
             <input
@@ -31,16 +29,13 @@ export function AddNote({ addNote }) {
                 onChange={handleChange}
                 value={newNote.title}
             />
-            {/* <input
-                placeholder="Note text.."
-                type="text"
-                id="txt"
-                name="txt"
-                onChange={handleChange}
-                value={newNote.txt}
-            /> */}
-
             <button>add</button>
         </form>
+            <div className="type-selector flex space-around">
+                <button className="fa img"></button>
+                <button className="fa video"></button>
+                <button className="fa todo"></button>
+                <button className="fa txt"></button>
+            </div>
     </div>
 }

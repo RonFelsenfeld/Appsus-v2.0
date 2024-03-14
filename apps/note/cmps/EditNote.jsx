@@ -5,11 +5,15 @@ const { useNavigate, } = ReactRouter
 import { noteService } from "../../note/services/note.service.js"
 
 
-export function EditNote({note,  onUpdateNote, setIsEditing }) {
+export function EditNote({ note, onUpdateNote, setIsEditing }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const navigate = useNavigate()
 
-    // const inputRef = useRef()
+    const inputRef = useRef()
+
+    useEffect(() => {
+        inputRef.current.focus()
+    }, [])
 
     function handleChange({ target }) {
         const field = target.name
@@ -53,10 +57,11 @@ export function EditNote({note,  onUpdateNote, setIsEditing }) {
                     name="txt"
                     onChange={handleChange}
                     value={txt}
-                    // ref={inputRef}
+                    ref={inputRef}
                 />
-
-                <button>add</button>
+                <button className="edit-button">
+                    <a className="fa edit"></a>
+                </button>
             </form>
         </section>
     )

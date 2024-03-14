@@ -3,6 +3,11 @@ const { useState, useEffect } = React
 import { EditNote } from "./EditNote.jsx"
 import { ColorInput } from "./ColorInput.jsx"
 
+import { NoteTxt } from "./NoteTxt.jsx"
+import { NoteImg } from "./NoteImg.jsx"
+import { NoteTodos } from "./NoteTodos.jsx"
+import { NoteVideo } from "./NoteVideo.jsx"
+
 import { noteService } from "../services/note.service.js"
 
 
@@ -12,10 +17,8 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [noteIsPinned, setNoteIsPinned] = useState(note.isPinned)
 
-    useEffect(() => {
-        // note.isPinned = noteIsPinned
+    const [cmpType, setCmpType] = useState(note.type)
 
-    }, [])
 
     function onChangeColor(color) {
         noteToEdit.style.backgroundColor = color
@@ -28,34 +31,37 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
     function onTogglePin() {
         noteToEdit.isPinned = !noteToEdit.isPinned
-        noteService.save(noteToEdit)
-            .then((savedNote) => {
-                setNoteToEdit({ ...savedNote })
-            })
+        // noteService.save(noteToEdit)
+        onUpdateNote(noteToEdit)
+        // .then((savedNote) => {
+        //     setNoteToEdit({ ...savedNote })
+        // })
     }
 
+
+
+
+
+
+    // console.log(cmpType);
+
+    ////TODO CHANGE TO REAL BUTTON WITH FILIING
     return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }} className="note-preview flex space-between column">
 
-        <button className="pin" onClick={() => {
-            onTogglePin()
-            // setNoteIsPinned((isPin) => !isPin)
-            // onTogglePin(noteIsPinned)
-        }}>pin</button>
-
-
-        {!isEditing && <React.Fragment>
-            <h2>{note.info.title}</h2>
-            <h2>{note.info.txt}</h2>
-        </React.Fragment>
+        {!note.isPinned &&
+            <a className="fa pin" onClick={() => {
+                onTogglePin()
+            }}></a>
+        }
+        {note.isPinned &&
+            <a className="fa unPin" onClick={() => {
+                onTogglePin()
+            }}></a>
         }
 
-        {
-            isEditing && <EditNote
-                note={note}
-                isEditing={isEditing}
-                setIsEditing={setIsEditing}
-                onUpdateNote={onUpdateNote} />
-        }
+        <DynamicCmp
+            onUpdateNote={onUpdateNote}
+            note={note} />
 
         {
             isColorPicker && <ColorInput
@@ -66,15 +72,25 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
         <div className="note-actions flex space-around">
             <button onClick={() => { setIsColorPicker((prevIsClr) => !prevIsClr) }} >color</button>
             <button>img</button>
-            <button>arcive</button>
             <button>copy</button>
             <button>email</button>
             <button className="note-remove-btn" onClick={() => { onRemoveNote(note.id) }}>x</button>
         </div>
 
-
-
     </div >
 
+}
 
+function DynamicCmp(props) {
+    // console.log(props);
+    switch (props.note.type) {
+        case 'NoteTxt':
+            return <NoteTxt {...props} />
+        case 'NoteImg':
+            return <NoteImg {...props} />
+        case 'NoteVideo':
+            return <NoteVideo {...props} />
+        case 'NoteTodo':
+            return <NoteTodos {...props} />
+    }
 }

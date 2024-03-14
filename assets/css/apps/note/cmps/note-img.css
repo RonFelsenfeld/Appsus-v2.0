@@ -1,0 +1,11 @@
+.img-container{
+    padding: 1.1em;
+}
+
+.img-container img{
+    margin-top: .4em;
+    margin-inline-start: 5em;
+    max-width: 150px;
+    border: 2px solid black;
+    border-radius: 1.5em;
+}

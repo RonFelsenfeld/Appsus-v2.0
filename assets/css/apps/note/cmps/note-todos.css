@@ -1,0 +1,9 @@
+.todo-list{
+    margin-inline-start: .8em;
+    padding: 0.8em 1.06em 0;
+    font-size: 1.5em
+}
+
+.todo-list li{
+    padding: .8em;
+}

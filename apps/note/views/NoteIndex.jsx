@@ -6,6 +6,7 @@ const { useParams } = ReactRouter
 
 import { NotePreview } from "../cmps/NotePreview.jsx"
 import { NoteFilter } from "../cmps/NoteFIlter.jsx"
+// import { NoteTxt } from "../cmps/NoteTxt.jsx"
 
 import { noteService } from "../services/note.service.js"
 import { AddNote } from "../cmps/AddNote.jsx"
@@ -14,26 +15,29 @@ import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const { noteId } = useParams()
+    
+
     // const [isEdit, setIsEdit] = useState(false)
 
     useEffect(() => {
         loadNotes()
-    }, [notes])
-
-
-
+    }, [])
+    
+    
+    
     // function notesSort(notes) {
-    //     notes.sort((note1,note2)=> (note1.isPinned+"").localeCompare(note2.isPinned+"")).reverse()
-    //     console.log(notes);
-    //     return notes
-    // }
-
-
-
-    function loadNotes() {
-        noteService.query()
+        //     notes.sort((note1,note2)=> (note1.isPinned+"").localeCompare(note2.isPinned+"")).reverse()
+        //     console.log(notes);
+        //     return notes
+        // }
+        
+        
+        
+        function loadNotes() {
+            noteService.query()
             .then((notes) => {
                 setNotes(notes)
+                console.log(notes)
             })
     }
 
