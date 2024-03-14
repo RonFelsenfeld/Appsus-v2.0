@@ -10,29 +10,39 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     const [isEditing, setIsEditing] = useState(false)
     const [isColorPicker, setIsColorPicker] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(note)
-    const [noteIsPinned, setNoteIsPinned] = useState(false)
+    const [noteIsPinned, setNoteIsPinned] = useState(note.isPinned)
+
+    useEffect(() => {
+        // note.isPinned = noteIsPinned
+
+    }, [])
 
     function onChangeColor(color) {
-        note.style.backgroundColor = color
-        noteService.save(note)
+        // note.style.backgroundColor = color
+        noteToEdit.style.backgroundColor = color
+        noteService.save(noteToEdit)
             .then((savedNote) => {
                 setNoteToEdit({ ...savedNote })
                 setIsColorPicker(false)
             })
     }
 
-    function onPinClick() {
-        // console.log(note);
-        setNoteIsPinned((prevNoteIsPinned) => !prevNoteIsPinned)
-        note.isPinned = noteIsPinned
-        console.log(note.isPinned)
+    function onTogglePin() {
+        noteToEdit.isPinned = !noteToEdit.isPinned
+        noteService.save(noteToEdit)
+            .then((savedNote) => {
+                setNoteToEdit({ ...savedNote })
+            })
     }
-
-
 
     return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }} className="note-preview flex space-between column">
 
-        <button className="pin" onClick={onPinClick}>pin</button>
+        <button className="pin" onClick={() => {
+            onTogglePin()
+            // setNoteIsPinned((isPin) => !isPin)
+            // onTogglePin(noteIsPinned)
+        }}>pin</button>
+
 
         {!isEditing && <React.Fragment>
             <h2>{note.info.title}</h2>
