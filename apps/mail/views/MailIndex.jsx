@@ -16,6 +16,7 @@ export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [unreadCount, setUnreadCount] = useState(0)
   const [isComposingMail, setIsComposingMail] = useState(false)
+  const [sortBy, setSortBy] = useState({})
   const [filterBy, setFilterBy] = useState(
     emailService.getFilterFromParams(searchParams)
   )
@@ -26,11 +27,11 @@ export function MailIndex() {
   useEffect(() => {
     loadMails()
     setSearchParams(filterBy)
-  }, [filterBy])
+  }, [filterBy, sortBy])
 
   function loadMails() {
     emailService
-      .query(filterBy)
+      .query(filterBy, sortBy)
       .then(mails => {
         setMails(mails)
         calcUnread()
@@ -42,7 +43,9 @@ export function MailIndex() {
     emailService
       .getUnreadCount(filterBy)
       .then(setUnreadCount)
-      .catch(err => console.error('Had issues with calculating unread mails'))
+      .catch(err =>
+        console.error('Had issues with calculating unread mails', err)
+      )
   }
 
   function onReadMail(mailId) {
@@ -68,6 +71,11 @@ export function MailIndex() {
     setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
   }
 
+  function onSetSortBy(newSort) {
+    const dir = sortBy[newSort] === 1 ? -1 : 1
+    setSortBy({ [newSort]: dir })
+  }
+
   function onSendMail(mail) {
     emailService
       .save(mail)
@@ -82,7 +90,10 @@ export function MailIndex() {
       })
   }
 
-  function onRemoveMail(mail) {
+  function onRemoveMail(ev, mail) {
+    console.log(ev)
+    ev.stopPropagation()
+
     if (!mail.removedAt) {
       moveToTrash(mail)
     } else {
@@ -121,7 +132,7 @@ export function MailIndex() {
 
   if (!mails) return <div>loading...</div>
 
-  const { folder, txt, isUnreadOnly } = filterBy
+  const { folder, txt } = filterBy
   return (
     <section className="mail-index">
       <MailFolderList
@@ -144,8 +155,11 @@ export function MailIndex() {
               onReadMail={onReadMail}
               onRemoveMail={onRemoveMail}
               folder={folder}
+              onSetSortBy={onSetSortBy}
             />
-            {filterBy.folder === 'inbox' && <p>Unread: {unreadCount}</p>}
+            {filterBy.folder === 'inbox' && (
+              <p class="unread">Unread: {unreadCount}</p>
+            )}
           </div>
         </Fragment>
       )}

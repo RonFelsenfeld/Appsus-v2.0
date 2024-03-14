@@ -29,8 +29,8 @@ export function MailDetails() {
       })
   }
 
-  if (!mail) return <div>loading details...</div>
-  const { subject, body, from, sentAt } = mail
+  if (!mail) return <div className="loading">loading details...</div>
+  const { subject, body, to, from, sentAt } = mail
   return (
     <section className="mail-details">
       <Link to="/mail">
@@ -42,6 +42,7 @@ export function MailDetails() {
 
       <div>
         <span className="mail-from">{from}</span>
+        <span className="mail-to">{`<${to}>`}</span>
         <span className="mail-sent-at">{utilService.formatDate(sentAt)}</span>
         <h1 className="mail-subject">{subject}</h1>
         <p className="mail-body">{body}</p>

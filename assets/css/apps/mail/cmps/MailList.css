@@ -1,4 +1,28 @@
 .mail-list {
   background-color: var(--secondary-base);
   border-block-start: 1px solid var(--clr-mail-border);
+  margin-block-end: 0.5em;
+}
+
+.list-header {
+  grid-template-columns: repeat(4, 1fr) 30px;
+  align-items: center;
+
+  padding: 0.5em;
+  font-size: 1.4em;
+  font-family: RobotoBold;
+
+  background-color: var(--clr-gray1);
+  cursor: pointer;
+}
+
+.list-header .send-at-title {
+  justify-self: end;
+  padding-inline-end: 1em;
+}
+
+.no-mails-msg,
+.unread {
+  font-size: 2em;
+  font-family: RobotoBold, serif;
 }

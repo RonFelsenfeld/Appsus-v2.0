@@ -19,6 +19,12 @@
   margin-inline-end: 1em;
 }
 
+.mail-details .mail-to {
+  font-size: 1.5em;
+  font-family: RobotoBold, serif;
+  color: rgb(163, 163, 163);
+}
+
 .mail-details .mail-sent-at {
   font-size: 1.5em;
 }
@@ -29,4 +35,9 @@
 
 .mail-details .mail-body {
   font-size: 2em;
+}
+
+.loading {
+  font-size: 1.5em;
+  margin-block-start: 1em;
 }

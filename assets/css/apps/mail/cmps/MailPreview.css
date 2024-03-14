@@ -1,5 +1,5 @@
 .mail-preview {
-  grid-template-columns: repeat(4, 1fr) auto;
+  grid-template-columns: repeat(4, 1fr) 30px;
   align-items: center;
 
   padding: 0.5em;
