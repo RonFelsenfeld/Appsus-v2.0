@@ -28,11 +28,17 @@ function query(filterBy = getDefaultCriteria()) {
     if (filterBy.folder) {
       mails = _filterByFolder(mails, filterBy.folder)
     }
-    // if (filterBy.txt) {
-    //   const regex = new RegExp(filterBy.desc, 'i')
-    //   cars = cars.filter(car => regex.test(car.desc))
-    // }
 
+    if (filterBy.txt) {
+      const regex = new RegExp(filterBy.txt, 'i')
+      mails = mails.filter(
+        mail => regex.test(mail.subject) || regex.test(mail.body)
+      )
+    }
+
+    if (filterBy.isRead) {
+      mails = mails.filter(mail => !mail.isRead)
+    }
     return mails
   })
 }
@@ -71,7 +77,6 @@ function getDefaultCriteria() {
   return {
     folder: 'inbox',
     txt: '',
-    labels: [],
   }
 }
 
@@ -91,7 +96,6 @@ function getFilterFromParams(searchParams = {}) {
   return {
     folder: searchParams.get('folder') || defaultCriteria.folder,
     txt: searchParams.get('txt') || defaultCriteria.txt,
-    labels: searchParams.get('labels') || defaultCriteria.labels,
   }
 }
 

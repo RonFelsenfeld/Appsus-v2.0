@@ -1,0 +1,26 @@
+.mail-filter {
+  margin-block: 1em;
+}
+
+.mail-filter form {
+  gap: 1.5em;
+}
+
+.mail-filter .filter-txt {
+  width: 60%;
+
+  padding: 1em;
+  border: none;
+  border-radius: 2em;
+
+  background-color: var(--clr-gray1);
+  font-size: 1.5em;
+}
+
+.mail-filter .filter-txt:focus {
+  outline: none;
+}
+
+.mail-filter .filter-read {
+  font-size: 1.5em;
+}

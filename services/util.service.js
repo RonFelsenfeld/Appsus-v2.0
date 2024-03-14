@@ -9,6 +9,7 @@ export const utilService = {
   saveToStorage,
   loadFromStorage,
   formatDate,
+  getRelativeTime,
 }
 
 function makeId(length = 6) {
@@ -120,4 +121,40 @@ function saveToStorage(key, val) {
 function loadFromStorage(key) {
   var val = localStorage.getItem(key)
   return JSON.parse(val)
+}
+
+function getRelativeTime(timestamp) {
+  const now = new Date()
+  const diff = now - timestamp
+  const oneHour = 60 * 60 * 1000
+  const oneDay = 24 * oneHour
+  const oneWeek = 7 * oneDay
+
+  if (diff < oneDay) {
+    // Less than 24 hours ago
+    const hours = Math.floor(diff / oneHour)
+    const minutes = Math.floor((diff % oneHour) / (60 * 1000))
+    return `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}`
+  } else if (diff < oneWeek) {
+    // Less than a week ago
+    const days = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ]
+    const dayIndex = timestamp.getDay()
+    return days[dayIndex]
+  } else {
+    // Older than a week
+    const year = timestamp.getFullYear()
+    const month = (timestamp.getMonth() + 1).toString().padStart(2, '0')
+    const day = timestamp.getDate().toString().padStart(2, '0')
+    return `${year}-${month}-${day}`
+  }
 }

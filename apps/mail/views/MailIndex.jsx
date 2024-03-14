@@ -121,7 +121,7 @@ export function MailIndex() {
 
   if (!mails) return <div>loading...</div>
 
-  const { folder } = filterBy
+  const { folder, txt, isUnreadOnly } = filterBy
   return (
     <section className="mail-index">
       <MailFolderList
@@ -133,12 +133,17 @@ export function MailIndex() {
       {!mailId && (
         <Fragment>
           <div>
-            <MailFilter />
+            <MailFilter
+              onSetFilter={onSetFilter}
+              filterBy={{ txt }}
+              folder={folder}
+            />
+
             <MailList
               mails={mails}
               onReadMail={onReadMail}
               onRemoveMail={onRemoveMail}
-              folder={filterBy.folder}
+              folder={folder}
             />
             {filterBy.folder === 'inbox' && <p>Unread: {unreadCount}</p>}
           </div>
