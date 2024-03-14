@@ -1,0 +1,43 @@
+.folder-list button {
+  font-family: inherit;
+}
+
+.folder-list .btn-compose {
+  padding: 1.5em;
+  border: none;
+  border-radius: 1em;
+  margin-inline-start: 1em;
+  margin-block: 1em 2em;
+
+  font-size: 1.5em;
+  background-color: var(--clr-blue2);
+}
+
+.folder-list .btn-compose:hover {
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302),
+    0 4px 8px 3px rgba(60, 64, 67, 0.149);
+  background-color: #c2e7ff;
+  transition: box-shadow 0.08s linear;
+}
+
+.folder-list .folder-container {
+  margin-inline-end: 3em;
+}
+
+.folder-list .folder-container .active {
+  background-color: var(--clr-blue1);
+  font-family: RobotoBold, serif;
+}
+
+.folder-list .folder-container > *:not(.active):hover {
+  background-color: var(--clr-gray1);
+}
+
+.btn-folder {
+  padding: 0.5em;
+  border: none;
+  border-radius: 0 1.5em 1.5em 0;
+
+  font-size: 1.4em;
+  background: transparent;
+}

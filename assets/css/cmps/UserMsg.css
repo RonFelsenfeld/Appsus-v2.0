@@ -1,0 +1,22 @@
+.user-msg {
+  position: absolute;
+  top: 1em;
+  right: 50%;
+
+  border-radius: 2em;
+  padding: 1em 2em;
+
+  font-family: RobotoBold, serif;
+  font-size: 1.5em;
+
+  background-color: lightgray;
+  transform: translateX(50%);
+}
+
+.user-msg.success {
+  background-color: lightgreen;
+}
+
+.user-msg.error {
+  background-color: lightpink;
+}

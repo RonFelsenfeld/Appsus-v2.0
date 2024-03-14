@@ -1,0 +1,35 @@
+.note-preview {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: var(--main-bg-color);
+    border-radius: .8em;
+    transition: .218s;
+    border: 1px solid lightgray;
+}
+
+.note-preview:hover {
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, .35);
+    cursor: pointer;
+}
+.note-preview:hover .note-actions{
+opacity: 1;
+}
+
+.note-preview h2 {
+    padding: 0.8em 1.06em 0;
+}
+
+.note-info-txt{
+    padding: 0.8em 1.06em;
+}
+
+.note-actions{
+   opacity: 0;
+   transition: .28s;
+}
+
+
+
+
+

@@ -1,0 +1,25 @@
+header {
+  background: var(--main-bg-color);
+  border-bottom: 2px solid white;
+  font-family: RobotoRegular, serif;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+nav a {
+  margin: 0.5em;
+}
+
+nav a:active {
+  color: purple;
+}
+
+nav a.active {
+  color: darkblue;
+  font-weight: bold;
+  text-decoration: overline;
+}

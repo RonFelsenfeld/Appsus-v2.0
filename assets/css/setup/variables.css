@@ -1,0 +1,16 @@
+:root {
+  --main-bg-color: #f6f8fc;
+  --main-fn-color: #202124;
+
+  --secondary-1: rgb(242, 246, 252);
+  --secondary-base: rgb(255, 255, 255);
+
+  --clr-blue2: #c2e7ff;
+  --clr-blue1: #a8c7fa;
+
+  --clr-yellow1: #feefc3;
+
+  --clr-gray1: #efeff1;
+
+  --clr-mail-border: rgba(128, 128, 128, 0.207);
+}

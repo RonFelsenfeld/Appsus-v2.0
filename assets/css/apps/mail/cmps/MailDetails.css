@@ -1,0 +1,32 @@
+.mail-details {
+  background-color: var(--secondary-base);
+  padding: 1.5em;
+}
+
+.mail-details .btn {
+  padding: 1em;
+  border: none;
+  border-radius: 50%;
+  margin-block-end: 1em;
+
+  font-family: inherit;
+  background-color: gray;
+}
+
+.mail-details .mail-from {
+  font-size: 2.5em;
+  font-family: RobotoBold, serif;
+  margin-inline-end: 1em;
+}
+
+.mail-details .mail-sent-at {
+  font-size: 1.5em;
+}
+
+.mail-details .mail-subject {
+  font-size: 2.5em;
+}
+
+.mail-details .mail-body {
+  font-size: 2em;
+}

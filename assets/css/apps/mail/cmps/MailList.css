@@ -1,0 +1,4 @@
+.mail-list {
+  background-color: var(--secondary-base);
+  border-block-start: 1px solid var(--clr-mail-border);
+}
