@@ -96,16 +96,3 @@ function _createNotes() {
 // }
 
 
-
-
-
-// function _setNextPrevCarId(car) {
-//     return storageService.query(NOTE_KEY).then((cars) => {
-//         const carIdx = cars.findIndex((currCar) => currCar.id === car.id)
-//         const nextCar = cars[carIdx + 1] ? cars[carIdx + 1] : cars[0]
-//         const prevCar = cars[carIdx - 1] ? cars[carIdx - 1] : cars[cars.length - 1]
-//         car.nextCarId = nextCar.id
-//         car.prevCarId = prevCar.id
-//         return car
-//     })
-// }
