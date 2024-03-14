@@ -33,7 +33,7 @@
   background-color: var(--clr-gray1);
 }
 
-.btn-folder {
+.folder-container .btn-folder {
   text-align: start;
   padding: 0.5em;
   padding-inline-start: 3em;
@@ -42,4 +42,25 @@
 
   font-size: 1.4em;
   background: transparent;
+}
+
+.folder-container .btn-folder::before {
+  font-family: faSolid;
+  font-size: 1em;
+}
+
+.folder-container .btn-inbox::before {
+  content: '\f01c';
+}
+
+.folder-container .btn-sent::before {
+  content: '\f1d8';
+}
+
+.folder-container .btn-trash::before {
+  content: '\f1f8';
+}
+
+.folder-container .btn-draft::before {
+  content: '\f15b';
 }

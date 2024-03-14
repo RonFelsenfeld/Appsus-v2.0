@@ -17,3 +17,13 @@
   font-family: RobotoThin;
   src: url(../../fonts/Roboto/Roboto-Thin.ttf);
 }
+
+@font-face {
+  font-family: faRegular;
+  src: url(../../fonts/fa/fa-regular-400.ttf);
+}
+
+@font-face {
+  font-family: faSolid;
+  src: url(../../fonts/fa/fa-solid-900.ttf);
+}

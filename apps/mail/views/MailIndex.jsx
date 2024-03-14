@@ -90,10 +90,8 @@ export function MailIndex() {
       })
   }
 
-  function onRemoveMail(ev, mail) {
-    console.log(ev)
-    ev.stopPropagation()
-
+  function onRemoveMail(mail) {
+    console.log(mail)
     if (!mail.removedAt) {
       moveToTrash(mail)
     } else {
@@ -158,7 +156,7 @@ export function MailIndex() {
               onSetSortBy={onSetSortBy}
             />
             {filterBy.folder === 'inbox' && (
-              <p class="unread">Unread: {unreadCount}</p>
+              <p className="unread">Unread: {unreadCount}</p>
             )}
           </div>
         </Fragment>

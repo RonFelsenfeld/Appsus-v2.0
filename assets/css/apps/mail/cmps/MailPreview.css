@@ -1,5 +1,5 @@
 .mail-preview {
-  grid-template-columns: repeat(4, 1fr) 30px;
+  grid-template-columns: 1fr 1fr 2fr 1fr 30px;
   align-items: center;
 
   padding: 0.5em;
@@ -14,6 +14,8 @@
 
 .mail-preview .mail-body {
   font-family: RobotoRegular;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .mail-preview .mail-sent-at {

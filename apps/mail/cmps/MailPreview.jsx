@@ -11,18 +11,17 @@ export function MailPreview({ mail, onRemoveMail, folder }) {
     <article className={`mail-preview grid ${isReadClass}`}>
       <p className="mail-from">{fromOrTo}</p>
       <p className="mail-subject">{subject}</p>
-      <p className="mail-body">{body.substring(0, 20)}...</p>
+      <p className="mail-body">{body}</p>
+      {/* <p className="mail-body">{body.substring(0, 20)}...</p> */}
       <p className="mail-sent-at">{utilService.formatDate(sentAt)}</p>
 
-      <div onClick={ev => ev.stopPropagation()}>
-        <button
-          title="Delete"
-          className="btn-remove"
-          onClick={ev => onRemoveMail(ev, mail)}
-        >
-          x
-        </button>
-      </div>
+      <button
+        title="Delete"
+        className="btn-remove"
+        onClick={() => onRemoveMail(mail)}
+      >
+        x
+      </button>
     </article>
   )
 }

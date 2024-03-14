@@ -25,7 +25,7 @@ export function MailDetails() {
           .catch(err => console.log('Had issues with loading mail', err))
       })
       .catch(err => {
-        console.log('Had issues loading email', err)
+        console.error('Had issues loading email', err)
       })
   }
 
@@ -34,11 +34,12 @@ export function MailDetails() {
   return (
     <section className="mail-details">
       <Link to="/mail">
-        <button className="btn btn-go-back">Back</button>
+        <button className="btn btn-go-back"></button>
       </Link>
-      <button className="btn btn-delete" onClick={() => onRemoveMail(mail)}>
-        X
-      </button>
+      <button
+        className="btn btn-delete"
+        onClick={() => onRemoveMail(mail)}
+      ></button>
 
       <div>
         <span className="mail-from">{from}</span>

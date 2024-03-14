@@ -23,28 +23,34 @@ export function MailFolderList({ onComposeMail, onSetFilter, filterBy }) {
 
       <div className="folder-container flex column">
         <button
-          className={`btn-folder ${folder === 'inbox' ? 'active' : ''}`}
+          className={`btn-folder btn-inbox ${
+            folder === 'inbox' ? 'active' : ''
+          }`}
           onClick={() => handleFolderChange('inbox')}
         >
           Inbox
         </button>
 
         <button
-          className={`btn-folder ${folder === 'sent' ? 'active' : ''}`}
+          className={`btn-folder btn-sent ${folder === 'sent' ? 'active' : ''}`}
           onClick={() => handleFolderChange('sent')}
         >
           Sent
         </button>
 
         <button
-          className={`btn-folder ${folder === 'trash' ? 'active' : ''}`}
+          className={`btn-folder btn-trash ${
+            folder === 'trash' ? 'active' : ''
+          }`}
           onClick={() => handleFolderChange('trash')}
         >
           Trash
         </button>
 
         <button
-          className={`btn-folder ${folder === 'draft' ? 'active' : ''}`}
+          className={`btn-folder btn-draft ${
+            folder === 'draft' ? 'active' : ''
+          }`}
           onClick={() => handleFolderChange('draft')}
         >
           Draft

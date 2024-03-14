@@ -9,8 +9,28 @@
   border-radius: 50%;
   margin-block-end: 1em;
 
-  font-family: inherit;
-  background-color: gray;
+  background-color: transparent;
+}
+
+.mail-details .btn:hover {
+  background-color: gainsboro;
+}
+
+.mail-details .btn:active {
+  scale: 0.95;
+}
+
+.mail-details .btn::before {
+  font-family: faSolid;
+  font-size: 1.5em;
+}
+
+.mail-details .btn-go-back::before {
+  content: '\f060';
+}
+
+.mail-details .btn-delete::before {
+  content: '\f1f8';
 }
 
 .mail-details .mail-from {
