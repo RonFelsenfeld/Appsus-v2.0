@@ -32,15 +32,17 @@ export function MailDetails() {
   if (!mail) return <div className="loading">loading details...</div>
   const { subject, body, to, from, sentAt } = mail
   return (
-    <section className="mail-details">
-      <Link to="/mail">
-        <button className="btn btn-go-back" title="Go back"></button>
-      </Link>
-      <button
-        className="btn btn-delete"
-        title="Delete"
-        onClick={() => onRemoveMail(mail)}
-      ></button>
+    <section className="mail-details flex column">
+      <div className="action-container">
+        <Link to="/mail">
+          <button className="btn btn-go-back" title="Go back"></button>
+        </Link>
+        <button
+          className="btn btn-delete"
+          title="Delete"
+          onClick={() => onRemoveMail(mail)}
+        ></button>
+      </div>
 
       <div>
         <span className="mail-from">{from}</span>
