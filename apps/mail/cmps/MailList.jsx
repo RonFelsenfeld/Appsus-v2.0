@@ -8,28 +8,46 @@ export function MailList({
   onRemoveMail,
   folder,
   onSetSortBy,
+  sortBy,
 }) {
-  if (!mails.length) return <div className="no-mails-msg">No mails to show</div>
-
   function getFromToTitle() {
     if (folder === 'sent' || folder === 'draft') return 'To'
     return 'From'
   }
 
+  function getSortDirClass() {
+    const [dir] = Object.values(sortBy)
+    return dir > 0 ? 'sort-up' : 'sort-down'
+  }
+
+  if (!mails.length) return <div className="no-mails-msg">No mails to show</div>
+
   return (
     <React.Fragment>
       <header className="list-header grid">
-        <p className="from-title" onClick={() => onSetSortBy('from')}>
+        <p
+          className={`from-title ${sortBy.from ? getSortDirClass() : ''}`}
+          onClick={() => onSetSortBy('from')}
+        >
           {getFromToTitle()}
         </p>
-        <p className="subject-title" onClick={() => onSetSortBy('subject')}>
+        <p
+          className={`subject-title ${sortBy.subject ? getSortDirClass() : ''}`}
+          onClick={() => onSetSortBy('subject')}
+        >
           Subject
         </p>
-        <p className="body-title" onClick={() => onSetSortBy('body')}>
+        <p
+          className={`body-title ${sortBy.body ? getSortDirClass() : ''}`}
+          onClick={() => onSetSortBy('body')}
+        >
           Body
         </p>
-        <p className="send-at-title" onClick={() => onSetSortBy('sentAt')}>
-          Send at
+        <p
+          className={`sent-at-title ${sortBy.sentAt ? getSortDirClass() : ''}`}
+          onClick={() => onSetSortBy('sentAt')}
+        >
+          Sent at
         </p>
       </header>
 

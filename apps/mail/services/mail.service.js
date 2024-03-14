@@ -15,6 +15,7 @@ export const emailService = {
   save,
   getEmptyMail,
   getDefaultCriteria,
+  getDefaultSortBy,
   getUnreadCount,
   getFilterFromParams,
 }
@@ -23,7 +24,7 @@ _createMails()
 // For Debug only
 window.ms = emailService
 
-function query(filterBy = getDefaultCriteria(), sortBy = {}) {
+function query(filterBy = getDefaultCriteria(), sortBy = getDefaultSortBy()) {
   return storageService.query(MAIL_KEY).then(mails => {
     if (filterBy.folder) {
       mails = _filterByFolder(mails, filterBy.folder)
@@ -86,6 +87,10 @@ function getDefaultCriteria() {
   }
 }
 
+function getDefaultSortBy() {
+  return { sentAt: -1 }
+}
+
 function getUnreadCount(filterBy) {
   return query(filterBy).then(mails => {
     const totalUnread = mails.reduce((acc, mail) => {
@@ -113,7 +118,7 @@ function _createMail() {
   newMail.id = utilService.makeId()
   newMail.subject = _getRndSubject()
   newMail.body = _getRndBody() + '.'
-  newMail.sentAt = Date.now()
+  newMail.sentAt = _getRandomTimestamp()
   newMail.from = _getRndEmailAddress()
   newMail.to = loggedUser.email
 
@@ -159,7 +164,7 @@ function _filterByFolder(mails, folder) {
 
 function _sortMails(mails, sortBy) {
   if (sortBy.sentAt) {
-    mails.sort((mail1, mail2) => (mail1.sendAt - mail2.sendAt) * sortBy.sendAt)
+    mails.sort((mail1, mail2) => (mail1.sentAt - mail2.sentAt) * sortBy.sentAt)
   } else {
     // If it's not sentAt, it has to be sort by text property
     // Destructuring the key from sortBy and sorting based on him
@@ -169,6 +174,7 @@ function _sortMails(mails, sortBy) {
         mail1[sortKey].localeCompare(mail2[sortKey]) * sortBy[sortKey]
     )
   }
+
   return mails
 }
 
@@ -319,4 +325,12 @@ function _getRndBody() {
   }
 
   return message.trim()
+}
+
+function _getRandomTimestamp() {
+  const now = new Date()
+  const halfYearInMillis = 182.5 * 24 * 60 * 60 * 1000
+  const randomTimeOffset = Math.floor(Math.random() * halfYearInMillis)
+  const randomTimestamp = now.getTime() - randomTimeOffset
+  return randomTimestamp
 }

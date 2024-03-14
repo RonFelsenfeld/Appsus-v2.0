@@ -34,10 +34,11 @@ export function MailDetails() {
   return (
     <section className="mail-details">
       <Link to="/mail">
-        <button className="btn btn-go-back"></button>
+        <button className="btn btn-go-back" title="Go back"></button>
       </Link>
       <button
         className="btn btn-delete"
+        title="Delete"
         onClick={() => onRemoveMail(mail)}
       ></button>
 

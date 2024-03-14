@@ -16,9 +16,23 @@
   cursor: pointer;
 }
 
-.list-header .send-at-title {
+.list-header .sent-at-title {
   justify-self: end;
   padding-inline-end: 1em;
+}
+
+.list-header > *:is(.sort-up, .sort-down)::after {
+  font-family: faSolid;
+  font-size: 1em;
+  margin-inline-start: 0.5em;
+}
+
+.list-header .sort-up::after {
+  content: '\f176';
+}
+
+.list-header .sort-down::after {
+  content: '\f175';
 }
 
 .no-mails-msg,

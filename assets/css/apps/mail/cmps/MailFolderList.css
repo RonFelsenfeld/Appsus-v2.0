@@ -2,6 +2,12 @@
   font-family: inherit;
 }
 
+.folder-list button::before {
+  font-family: faRegular;
+  font-size: 1em;
+  margin-inline-end: 2em;
+}
+
 .folder-list .btn-compose {
   padding: 1.5em;
   border: none;
@@ -44,12 +50,13 @@
   background: transparent;
 }
 
-.folder-container .btn-folder::before {
+.folder-list .btn-compose::before {
   font-family: faSolid;
-  font-size: 1em;
+  content: '\f303';
 }
 
 .folder-container .btn-inbox::before {
+  font-family: faSolid;
   content: '\f01c';
 }
 
@@ -58,7 +65,7 @@
 }
 
 .folder-container .btn-trash::before {
-  content: '\f1f8';
+  content: '\f2ed';
 }
 
 .folder-container .btn-draft::before {

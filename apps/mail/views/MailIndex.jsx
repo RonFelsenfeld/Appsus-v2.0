@@ -16,7 +16,7 @@ export function MailIndex() {
   const [mails, setMails] = useState(null)
   const [unreadCount, setUnreadCount] = useState(0)
   const [isComposingMail, setIsComposingMail] = useState(false)
-  const [sortBy, setSortBy] = useState({})
+  const [sortBy, setSortBy] = useState(emailService.getDefaultSortBy())
   const [filterBy, setFilterBy] = useState(
     emailService.getFilterFromParams(searchParams)
   )
@@ -154,6 +154,7 @@ export function MailIndex() {
               onRemoveMail={onRemoveMail}
               folder={folder}
               onSetSortBy={onSetSortBy}
+              sortBy={sortBy}
             />
             {filterBy.folder === 'inbox' && (
               <p className="unread">Unread: {unreadCount}</p>

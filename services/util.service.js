@@ -125,21 +125,26 @@ function loadFromStorage(key) {
 
 function getRelativeTime(timestamp) {
   const now = new Date()
-  const diff = now - timestamp
-  const oneHour = 60 * 60 * 1000
-  const oneDay = 24 * oneHour
-  const oneWeek = 7 * oneDay
+  const targetDate = new Date(timestamp)
+  const diff = now - targetDate
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+  const weeks = Math.floor(days / 7)
 
-  if (diff < oneDay) {
-    // Less than 24 hours ago
-    const hours = Math.floor(diff / oneHour)
-    const minutes = Math.floor((diff % oneHour) / (60 * 1000))
-    return `${hours.toString().padStart(2, '0')}:${minutes
-      .toString()
-      .padStart(2, '0')}`
-  } else if (diff < oneWeek) {
-    // Less than a week ago
-    const days = [
+  if (seconds < 60) {
+    return 'Just now'
+  } else if (minutes < 60) {
+    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+  } else if (hours < 24 && targetDate.getDate() === now.getDate()) {
+    return `${targetDate.getHours()}:${
+      (targetDate.getMinutes() < 10 ? '0' : '') + targetDate.getMinutes()
+    }`
+  } else if (days === 1 && targetDate.getDate() === now.getDate() - 1) {
+    return 'Yesterday'
+  } else if (days < 7) {
+    const daysOfWeek = [
       'Sunday',
       'Monday',
       'Tuesday',
@@ -148,13 +153,10 @@ function getRelativeTime(timestamp) {
       'Friday',
       'Saturday',
     ]
-    const dayIndex = timestamp.getDay()
-    return days[dayIndex]
+    return daysOfWeek[targetDate.getDay()]
+  } else if (weeks < 5) {
+    return `${targetDate.toLocaleDateString('he')}`
   } else {
-    // Older than a week
-    const year = timestamp.getFullYear()
-    const month = (timestamp.getMonth() + 1).toString().padStart(2, '0')
-    const day = timestamp.getDate().toString().padStart(2, '0')
-    return `${year}-${month}-${day}`
+    return targetDate.toLocaleDateString('he')
   }
 }

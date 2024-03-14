@@ -12,8 +12,7 @@ export function MailPreview({ mail, onRemoveMail, folder }) {
       <p className="mail-from">{fromOrTo}</p>
       <p className="mail-subject">{subject}</p>
       <p className="mail-body">{body}</p>
-      {/* <p className="mail-body">{body.substring(0, 20)}...</p> */}
-      <p className="mail-sent-at">{utilService.formatDate(sentAt)}</p>
+      <p className="mail-sent-at">{utilService.getRelativeTime(sentAt)}</p>
 
       <button
         title="Delete"
