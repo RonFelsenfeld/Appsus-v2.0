@@ -45,11 +45,11 @@ export function NoteIndex() {
         noteService.remove(noteId)
             .then(() => {
                 setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
-                // showSuccessMsg(`Note removed successfully (${noteId})`)
+                showSuccessMsg(`Note removed successfully (${noteId})`)
             })
             .catch((err) => {
                 console.log('Had issues removing note', err)
-                // showErrorMsg(`Could not remove (${noteId})`)
+                showErrorMsg(`Could not remove (${noteId})`)
             })
     }
 
@@ -57,17 +57,18 @@ export function NoteIndex() {
         noteService.save(note)
             .then((updatedNote) => {
                 setNotes(prevNotes => [{ ...updatedNote }, ...prevNotes])
-                // showSuccessMsg(`adding ${note.title}`)
+                showSuccessMsg(`adding ${note.title}`)
             })
 
             .catch(err => {
                 console.log(err)
-                // showErrorMsg('already have it.', err)
+                showErrorMsg('already have it.', err)
             })
     }
 
-    //TODO need to get currect note
+
     function onUpdateNote(note) {
+        notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
         noteService.save(note)
             .then((savedNote) => {
                 setNotes((prevNotes) => prevNotes.map((currNote) => currNote.id === savedNote.id ? savedNote : currNote))

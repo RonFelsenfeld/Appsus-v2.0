@@ -42,7 +42,7 @@ export function AddNote({ addNote }) {
                 onChange={handleChange}
                 value={newNote.title}
             />
-            <button>add</button>
+            <button className="add-note-btn">add</button>
         </form>
         <div className="type-selector flex space-around">
             <button onClick={() => onImgSelect} className="fa img"></button>

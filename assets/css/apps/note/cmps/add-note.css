@@ -3,7 +3,7 @@
 
   padding: 1em;
   border: none;
-  border-radius: 2em;
+  border-radius: 0.8em;
 
   background-color: var(--clr-gray1);
   font-size: 1.5em;
@@ -11,6 +11,10 @@
 
 .add-note-form{
     align-items: center;
+}
+
+.add-note-btn{
+    margin-inline-start: 1em;
 }
 
 .type-selector{
