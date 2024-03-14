@@ -21,8 +21,10 @@ window.cs = noteService
 function query() {
     return storageService.query(NOTE_KEY)
         .then(notes => {
+            notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
             return notes
         })
+
 }
 
 function get(noteId) {

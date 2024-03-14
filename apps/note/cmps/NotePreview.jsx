@@ -18,7 +18,6 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     }, [])
 
     function onChangeColor(color) {
-        // note.style.backgroundColor = color
         noteToEdit.style.backgroundColor = color
         noteService.save(noteToEdit)
             .then((savedNote) => {

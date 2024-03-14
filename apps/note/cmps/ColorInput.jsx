@@ -13,7 +13,6 @@ export function ColorInput({ onChangeColor, noteToEdit, }) {
     ]
 
 
-    console.log(noteToEdit);
     return <section className="color-input">
         <div className="items-container flex space-around">
             {

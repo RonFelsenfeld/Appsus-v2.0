@@ -18,7 +18,16 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [notes])
+
+
+
+    // function notesSort(notes) {
+    //     notes.sort((note1,note2)=> (note1.isPinned+"").localeCompare(note2.isPinned+"")).reverse()
+    //     console.log(notes);
+    //     return notes
+    // }
+
 
 
     function loadNotes() {
@@ -53,12 +62,12 @@ export function NoteIndex() {
             })
     }
 
-//TODO need to get currect note
+    //TODO need to get currect note
     function onUpdateNote(note) {
         noteService.save(note)
-        .then((savedNote)=>{
-            setNotes((prevNotes) => prevNotes.map((currNote) => currNote.id === savedNote.id ? savedNote : currNote))
-        })
+            .then((savedNote) => {
+                setNotes((prevNotes) => prevNotes.map((currNote) => currNote.id === savedNote.id ? savedNote : currNote))
+            })
     }
 
     if (!notes) return <div>no notes to show..</div>
@@ -70,11 +79,11 @@ export function NoteIndex() {
                 {
                     notes.map(note => (
                         <li key={note.id}>
-                                <NotePreview
-                                    note={note}
-                                    onRemoveNote={onRemoveNote}
-                                    onUpdateNote={onUpdateNote}
-                                />
+                            <NotePreview
+                                note={note}
+                                onRemoveNote={onRemoveNote}
+                                onUpdateNote={onUpdateNote}
+                            />
                         </li>)
                     )}
             </ul>}
