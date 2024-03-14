@@ -17,6 +17,19 @@ export function AddNote({ addNote }) {
 
     }
 
+    function onImgSelect() {
+
+    }
+    function onVidSelect() {
+
+    }
+    function onTodoSelect() {
+
+    }
+    function onTxtSelect() {
+
+    }
+
 
     return <div className="add-note-form flex column space-between">
         <form onSubmit={onAddNote}>
@@ -31,11 +44,11 @@ export function AddNote({ addNote }) {
             />
             <button>add</button>
         </form>
-            <div className="type-selector flex space-around">
-                <button className="fa img"></button>
-                <button className="fa video"></button>
-                <button className="fa todo"></button>
-                <button className="fa txt"></button>
-            </div>
+        <div className="type-selector flex space-around">
+            <button onClick={() => onImgSelect} className="fa img"></button>
+            <button onClick={() => onVidSelect} className="fa video"></button>
+            <button onClick={() => onTodoSelect} className="fa todo"></button>
+            <button onClick={() => onTxtSelect} className="fa txt"></button>
+        </div>
     </div>
 }

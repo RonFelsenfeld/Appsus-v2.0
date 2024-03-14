@@ -22,7 +22,7 @@ function query() {
     return storageService.query(NOTE_KEY)
         .then(notes => {
             notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
-            console.log(notes)
+            // console.log(notes)
             return notes
         })
 

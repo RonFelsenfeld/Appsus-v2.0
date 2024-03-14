@@ -37,7 +37,7 @@ export function NoteIndex() {
             noteService.query()
             .then((notes) => {
                 setNotes(notes)
-                console.log(notes)
+                // console.log(notes)
             })
     }
 

@@ -1,5 +1,12 @@
 .add-note-form input{
-    width: 20em;
+    width: 30em;
+
+  padding: 1em;
+  border: none;
+  border-radius: 2em;
+
+  background-color: var(--clr-gray1);
+  font-size: 1.5em;
 }
 
 .add-note-form{
