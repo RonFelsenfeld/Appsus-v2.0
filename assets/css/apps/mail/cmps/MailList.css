@@ -21,16 +21,25 @@
   background-color: var(--secondary-base);
 }
 
-.mail-list .mail-preview-container .btn-star {
+.mail-list .mail-preview-container .btn {
   justify-self: start;
   background-color: transparent;
   border: none;
 }
 
-.mail-list .mail-preview-container .btn-star::before {
+.mail-list .mail-preview-container .btn::before {
+  font-size: 1em;
+}
+
+.mail-list .mail-preview-container .btn.unstarred::before {
   font-family: faRegular;
   content: '\f005';
-  font-size: 1em;
+}
+
+.mail-list .mail-preview-container .btn.starred::before {
+  font-family: faSolid;
+  content: '\f005';
+  color: #ffd43b;
 }
 
 .no-mails-msg,

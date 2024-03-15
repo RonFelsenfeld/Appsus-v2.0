@@ -10,9 +10,11 @@ export function MailList({
   folder,
   onSetSortBy,
   sortBy,
+  onToggleStarred,
 }) {
-  function onStarredMail(mailId) {
-    console.log(mailId)
+  function isStarredClass(mail) {
+    if (mail.isStarred) return 'starred'
+    return 'unstarred'
   }
 
   function getIsReadClass(mail) {
@@ -33,12 +35,11 @@ export function MailList({
             className={`mail-preview-container ${getIsReadClass(
               mail
             )} flex align center`}
-            onClick={() => onReadMail(mail.id)}
           >
             <button
               title="Starred"
-              className="btn-star"
-              onClick={() => onStarredMail(mail.id)}
+              className={`btn ${isStarredClass(mail)}`}
+              onClick={() => onToggleStarred(mail)}
             ></button>
 
             <Link to={`/mail/${mail.id}`}>
@@ -46,6 +47,7 @@ export function MailList({
                 mail={mail}
                 onRemoveMail={onRemoveMail}
                 folder={folder}
+                onClick={() => onReadMail(mail.id)}
               />
             </Link>
           </li>

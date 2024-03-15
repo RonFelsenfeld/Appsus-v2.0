@@ -74,6 +74,7 @@ function getEmptyMail() {
     isRead: false,
     sentAt: null,
     removedAt: null,
+    isStarred: false,
     from: '',
     to: '',
   }
@@ -156,6 +157,9 @@ function _filterByFolder(mails, folder) {
       filteredMails = mails.filter(
         mail => mail.from === loggedUser.email && !mail.sentAt
       )
+      break
+    case 'starred':
+      filteredMails = mails.filter(mail => mail.isStarred)
       break
   }
 

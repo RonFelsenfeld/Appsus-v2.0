@@ -18,6 +18,9 @@
 
   line-height: 1.5;
   overflow-y: hidden;
+
+  margin-inline-end: 3em;
+  text-align: justify;
 }
 
 .mail-preview .mail-content-container .mail-subject {

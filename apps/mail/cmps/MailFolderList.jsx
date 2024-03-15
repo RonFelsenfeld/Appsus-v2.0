@@ -38,6 +38,15 @@ export function MailFolderList({
         </button>
 
         <button
+          className={`btn-folder btn-starred ${
+            folder === 'starred' ? 'active' : ''
+          }`}
+          onClick={() => handleFolderChange('starred')}
+        >
+          Starred
+        </button>
+
+        <button
           className={`btn-folder btn-sent ${folder === 'sent' ? 'active' : ''}`}
           onClick={() => handleFolderChange('sent')}
         >

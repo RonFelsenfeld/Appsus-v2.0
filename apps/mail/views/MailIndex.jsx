@@ -67,6 +67,20 @@ export function MailIndex() {
       .catch(err => console.error('Had issues with reading mail:', err))
   }
 
+  function onToggleStarred(mail) {
+    mail.isStarred = !mail.isStarred
+    emailService
+      .save(mail)
+      .then(updatedMail => {
+        setMails(prevMails =>
+          prevMails.map(mail =>
+            mail.id === updatedMail.id ? updatedMail : mail
+          )
+        )
+      })
+      .catch(err => console.error('Had issues with starring mail:', err))
+  }
+
   function onSetFilter(fieldsToUpdate) {
     setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
   }
@@ -156,6 +170,7 @@ export function MailIndex() {
               folder={folder}
               onSetSortBy={onSetSortBy}
               sortBy={sortBy}
+              onToggleStarred={onToggleStarred}
             />
           </div>
         </Fragment>

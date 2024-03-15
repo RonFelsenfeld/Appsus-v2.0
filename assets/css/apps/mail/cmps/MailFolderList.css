@@ -64,6 +64,10 @@
   content: '\f01c';
 }
 
+.folder-container .btn-starred::before {
+  content: '\f005';
+}
+
 .folder-container .btn-sent::before {
   content: '\f1d8';
 }
