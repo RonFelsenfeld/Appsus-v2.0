@@ -15,19 +15,15 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const { noteId } = useParams()
-    
-
-    // const [isEdit, setIsEdit] = useState(false)
 
     useEffect(() => {
         loadNotes()
     }, [])
-            
-        function loadNotes() {
-            noteService.query()
+
+    function loadNotes() {
+        noteService.query()
             .then((notes) => {
                 setNotes(notes)
-                // console.log(notes)
             })
     }
 
@@ -46,11 +42,10 @@ export function NoteIndex() {
     function addNote(note) {
         noteService.save(note)
             .then((updatedNote) => {
-                setNotes(prevNotes => [updatedNote , ...prevNotes])
+                setNotes(prevNotes => [updatedNote, ...prevNotes])
                 showSuccessMsg(`adding`)
             })
             .catch(err => {
-                console.log(err)
                 showErrorMsg('already have it.', err)
             })
     }
@@ -64,6 +59,18 @@ export function NoteIndex() {
             })
     }
 
+    function onCopyClick(note) {
+        console.log(note);
+        const duplicateNote = { ...note, id: '', createdAt: Date.now() }
+        noteService.save(duplicateNote)
+            .then((saved) => {
+                setNotes((prevNotes) => [saved, ...prevNotes])
+
+                showSuccessMsg('Duplicated note')
+            })
+            .catch(err => showErrorMsg('could not duplicate'))
+    }
+
     if (!notes) return <div>no notes to show..</div>
     return <div className="notes-index">
         {/* <NoteFilter /> */}
@@ -75,6 +82,7 @@ export function NoteIndex() {
                         <li key={note.id}>
                             <NotePreview
                                 note={note}
+                                onCopyClick={onCopyClick}
                                 onRemoveNote={onRemoveNote}
                                 onUpdateNote={onUpdateNote}
                             />

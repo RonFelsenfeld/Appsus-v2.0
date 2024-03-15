@@ -5,6 +5,7 @@ import { EditNote } from "./EditNote.jsx";
 
 export function NoteTodos({ note, onUpdateNote }) {
     const [currTodos,setTodos]=useState([note.info.todos])
+    console.log(note);
 
 
     // function onTodoToggle(todo) {

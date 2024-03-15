@@ -13,12 +13,11 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 
 
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote,onCopyClick }) {
     const [isEditing, setIsEditing] = useState(false)
     const [isColorPicker, setIsColorPicker] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(note)
     const [noteIsPinned, setNoteIsPinned] = useState(note.isPinned)
-
     const [cmpType, setCmpType] = useState(note.type)
 
 
@@ -33,28 +32,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
     function onTogglePin() {
         noteToEdit.isPinned = !noteToEdit.isPinned
-        // noteService.save(noteToEdit)
         onUpdateNote(noteToEdit)
-        // .then((savedNote) => {
-        //     setNoteToEdit({ ...savedNote })
-        // })
     }
 
-
-    function onCopyClick(note) {
-        console.log(note);
-        const duplicateNote = { ...note, id: '', createdAt: Date.now() }
-        noteService.save(duplicateNote)
-        .then(() => {
-            showSuccessMsg('whhhhhwoooo')
-        })
-        .catch(err => showErrorMsg('hell naw'))
-    }
-
-
-    // console.log(cmpType);
-
-    ////TODO CHANGE TO REAL BUTTON WITH FILIING
     return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }} className="note-preview flex space-between column">
 
         {!note.isPinned &&

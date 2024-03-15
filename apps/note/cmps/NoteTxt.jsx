@@ -7,9 +7,6 @@ import { EditNote } from "./EditNote.jsx";
 export function NoteTxt({note,onUpdateNote}){
     const [isEditing, setIsEditing] = useState(false)
 
-
-
-
     return <div className="note-txt flex">
 
             {!isEditing && <div onClick={() => setIsEditing(prevIsEdit=>!prevIsEdit)}>

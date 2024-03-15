@@ -1,48 +1,71 @@
-const { useState, useEffect } = React
+const { useState } = React
 
+import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
 
 export function AddNote({ addNote }) {
-    // const [newNote, setnewNote] = useState({ title: '', txt: '' })
     const [newNote, setNewNote] = useState(noteService.getEmptyAllNote())
-
+    const [noteInput, setNoteInput] = useState('')
+    const [placeholder,setPlaceholder] = useState('Take a note...')
 
 
     function handleChange({ target }) {
-        // const field = target.name
-        let value = target.value
-        
-        // setNewNote((oldNote)=>({...oldNote,info:{...oldNote.info,txt:value}}))
+        let { value } = target
+        setNoteInput(value)
     }
 
     function onAddNote(ev) {
-        // console.log(ev.target)
         ev.preventDefault()
-        addNote(newNote)
-    }
+        switch (newNote.type) {
+            case 'NoteImg':
+                newNote.info.url = noteInput
 
+                break;
+            case 'NoteVideo':
+                const convertedInput = noteService.getEmbedUrl(noteInput)
+                newNote.info.src = convertedInput
+
+                break;
+            case 'NoteTodo':
+                const todosArr = noteInput.split(',')
+                newNote.info.todos = todosArr.map((todo)=>{
+                    return {id:utilService.makeId(), txt:todo,doneAt:new Date()}
+                })
+
+                break;
+            case 'NoteTxt':
+                newNote.info.txt = noteInput
+                break;
+
+        }
+        addNote(newNote)
+        setNoteInput('')
+        setNewNote(noteService.getEmptyAllNote())
+    }
 
     function onSelect(type) {
         switch (type) {
             case 'NoteImg':
-                setNewNote((oldNote) => ({ ...oldNote, type: 'NoteImg', info: { url: null, title: null } }))
+                setNewNote(noteService.getEmptyImgNote())
+                setPlaceholder('Enter img URL')
 
                 break;
             case 'NoteVideo':
-                setNewNote((oldNote) => ({ ...oldNote, type: 'NoteVideo', info: { src: null, title: null } }))
-
+                setNewNote(noteService.getEmptyVideoNote())
+                setPlaceholder('Enter Video URL')
+                
                 break;
-            case 'NoteTodo':
-                setNewNote((oldNote) => ({ ...oldNote, type: 'NoteTodo', info: { todos: [], title: null } }))
-
-                break;
-            case 'NoteTxt':
-                setNewNote((oldNote) => ({ ...oldNote, type: 'NoteTxt', info: { txt: null, title: null } }))
+                case 'NoteTodo':
+                    setNewNote(noteService.getEmptyTodosNote())
+                    setPlaceholder('Enter List (seperated by \' , \')')
+                    
+                    break;
+                    case 'NoteTxt':
+                        setNewNote(noteService.getEmptyNote())
+                        setPlaceholder('Take a note...')
                 break;
         }
     }
-
-    console.log(newNote)
     return <div className="add-note-form flex column space-between">
         <form onSubmit={onAddNote}>
             <label htmlFor="add"></label>
@@ -50,17 +73,11 @@ export function AddNote({ addNote }) {
                 type="text"
                 id="add"
                 name='txt'
-                // name={newNote.type}
-
-                placeholder="Take a note"
+                placeholder={placeholder}
                 onChange={handleChange}
-                // value={newNote.info}
-                
-                
-            // value={newNote.type}
-
+                value={noteInput}
             />
-            <button className="add-note-btn">add</button>
+            <button className="add-note-btn fa add"></button>
         </form>
         <div className="type-selector flex space-around">
             <button onClick={() => onSelect('NoteImg')} className="fa img"></button>

@@ -11,7 +11,12 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    getEmptyAllNote
+    getEmptyAllNote,
+    getEmptyImgNote,
+    getEmptyTodosNote,
+    getEmptyVideoNote,
+    getEmbedUrl
+    
     // getDefaultFilter,
     // getFilterFromParams
 }
@@ -41,17 +46,17 @@ function remove(noteId) {
 
 function save(note) {
     if (note.id) {
-        console.log(note)
         return storageService.put(NOTE_KEY, note)
     } else {
-        return storageService.post(NOTE_KEY, getEmptyNote())
+        console.log(note)
+        return storageService.post(NOTE_KEY, note)
     }
 }
 
 function getEmptyNote(title = '', txt = '') {
 
     return {
-        id: utilService.makeId(),
+        id: '',
         createdAt: new Date(),
         type: 'NoteTxt',
         isPinned: false,
@@ -78,7 +83,7 @@ function getEmptyAllNote() {
 }
 function getEmptyImgNote() {
     return {
-        id: utilService.makeId(),
+        id: '',
         createdAt: new Date(),
         type: 'NoteImg',
         isPinned: false,
@@ -86,14 +91,14 @@ function getEmptyImgNote() {
             backgroundColor: '#f6f8fc',
         },
         info: {
-            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0APlxQp4WsJeSExlejEnv-_Qwnbv_FUX3bQ&usqp=CAU',
-            title: 'ninja'
+            url: '',
+            title: ''
         }
     }
 }
 function getEmptyVideoNote() {
     return {
-        id: utilService.makeId(),
+        id: '',
         createdAt: new Date(),
         type: 'NoteVideo',
         isPinned: false,
@@ -101,14 +106,14 @@ function getEmptyVideoNote() {
             backgroundColor: '#f6f8fc',
         },
         info: {
-            src: 'https://www.youtube.com/embed/tgbNymZ7vqY',
-            title: 'muppet'
+            src: '',
+            title: ''
         }
     }
 }
 function getEmptyTodosNote() {
     return {
-        id: utilService.makeId(),
+        id: '',
         createdAt: new Date(),
         type: 'NoteTodo',
         isPinned: false,
@@ -116,10 +121,9 @@ function getEmptyTodosNote() {
             backgroundColor: '#f6f8fc',
         },
         info: {
-            title: 'my todos',
+            title: '',
             todos: [
-                { txt: 'Driving license', doneAt: null,id:utilService.makeId() },
-                { txt: 'Coding power', doneAt: 187111111,id:utilService.makeId() }
+                {txt:null,doneAt:null}
             ]
         }
     }
@@ -127,24 +131,35 @@ function getEmptyTodosNote() {
 
 function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
     const note = getEmptyNote(title, txt)
+    note.id = utilService.makeId()
     return note
 }
+// function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
+//     const note = getEmptyNote(title, txt)
+//     note.id = utilService.makeId()
+//     return note
+// }
+// function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
+//     const note = getEmptyNote(title, txt)
+//     note.id = utilService.makeId()
+//     return note
+// }
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-            getEmptyImgNote(),
-            getEmptyVideoNote(),
-            getEmptyTodosNote(),
-            _createNote(),
-            _createNote(),
-            _createNote(),
-            _createNote(),
+            // getEmptyImgNote(),
+            // getEmptyVideoNote(),
+            // getEmptyTodosNote(),
+            // getEmptyImgNote(),
+            // getEmptyVideoNote(),
+            // getEmptyTodosNote(),
+            
         ]
-        // notes.push(_createNote())
-        // notes.push(_createNote())
-        // notes.push(_createNote())
+        notes.push(_createNote())
+        notes.push(_createNote())
+        notes.push(_createNote())
         // notes.push(_createNote())
         // notes.push(_createNote())
         // notes.push(_createNote())
@@ -166,5 +181,12 @@ function _createNotes() {
 //         desc: searchParams.get('desc') || defaultFilter.desc
 //     }
 // }
+
+
+function getEmbedUrl(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+    const match = url.match(regExp)
+    return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : ''
+}
 
 

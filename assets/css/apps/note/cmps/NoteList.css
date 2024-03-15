@@ -22,6 +22,12 @@
     font-size: 2em;
 
 }
+.fa.add::before {
+    font-family: faRegular;
+    content: "\f044";
+    font-size: 2em;
+
+}
 
 .fa.video::before {
     font-family: faSolid;

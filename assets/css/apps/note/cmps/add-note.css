@@ -15,7 +15,14 @@
 }
 
 .add-note-btn{
-    margin-inline-start: 1em;
+    padding: 1em;
+    background-color: transparent;
+    border:none;
+    transition:all .2s
+}
+.add-note-btn:hover{
+    background-color:var(--clr-yellow1);
+    border-radius: 1em;
 }
 
 .type-selector{
@@ -41,3 +48,4 @@
     background-color:var(--clr-yellow1);
     border-radius: 1em;
 }
+
