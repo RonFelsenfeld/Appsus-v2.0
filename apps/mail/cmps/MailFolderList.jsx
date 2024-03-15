@@ -6,8 +6,11 @@ export function MailFolderList({
   onSetFilter,
   filterBy,
   unreadCount,
+  isMenuOpen,
+  setIsMenuOpen,
 }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -16,14 +19,24 @@ export function MailFolderList({
 
   function handleFolderChange(folder) {
     setFilterByToEdit({ folder })
+    setIsMenuOpen(false)
     navigate('/mail')
+  }
+
+  function handleComposeMail() {
+    onComposeMail()
+    setIsMenuOpen(false)
+  }
+
+  function getMenuClass() {
+    return isMenuOpen ? 'menu-open' : ''
   }
 
   const { folder } = filterByToEdit
   return (
-    <section className="folder-list">
-      <button onClick={onComposeMail} className="btn-compose">
-        Compose
+    <section className={`folder-list ${getMenuClass()}`}>
+      <button onClick={handleComposeMail} className="btn-compose">
+        <span>Compose</span>
       </button>
 
       <div className="folder-container flex column">

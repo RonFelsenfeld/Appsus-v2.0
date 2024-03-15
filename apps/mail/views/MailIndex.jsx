@@ -21,6 +21,9 @@ export function MailIndex() {
     emailService.getFilterFromParams(searchParams)
   )
 
+  // For mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const navigate = useNavigate()
   const { mailId } = useParams()
 
@@ -147,11 +150,18 @@ export function MailIndex() {
   const { folder, txt } = filterBy
   return (
     <section className="mail-index">
+      <div
+        className={`main-screen ${isMenuOpen ? 'menu-open' : ''}`}
+        onClick={() => setIsMenuOpen(false)}
+      ></div>
+
       <MailFolderList
         onComposeMail={() => setIsComposingMail(true)}
         onSetFilter={onSetFilter}
         filterBy={{ folder }}
         unreadCount={unreadCount}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
 
       {!mailId && (
@@ -161,6 +171,7 @@ export function MailIndex() {
               onSetFilter={onSetFilter}
               filterBy={{ txt }}
               folder={folder}
+              setIsMenuOpen={setIsMenuOpen}
             />
 
             <MailList

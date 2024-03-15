@@ -33,7 +33,7 @@ export function MailCompose({ onSendMail, onCloseMail }) {
         </button>
       </header>
 
-      <form onSubmit={onFinishMail}>
+      <form className="flex column" onSubmit={onFinishMail}>
         <div className="details-inputs flex column">
           <input
             className="recipients-input"
@@ -60,7 +60,7 @@ export function MailCompose({ onSendMail, onCloseMail }) {
         <textarea
           className="body-input"
           id="body"
-          cols="50"
+          cols="60"
           rows="20"
           name="body"
           value={body}

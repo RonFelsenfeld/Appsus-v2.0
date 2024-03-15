@@ -20,11 +20,6 @@
   border: none;
   background-color: transparent;
   font-weight: 600;
-  opacity: 0;
-}
-
-.mail-compose:hover .btn-close {
-  opacity: 1;
 }
 
 .mail-compose form {
@@ -49,8 +44,11 @@
 }
 
 .mail-compose .btn-submit {
+  width: 100px;
+
   padding: 1em 2em;
   border-radius: 2em;
+  margin-inline-start: auto;
 
   font-family: inherit;
   background-color: var(--clr-blue1);

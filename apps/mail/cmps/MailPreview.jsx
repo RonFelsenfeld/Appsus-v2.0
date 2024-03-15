@@ -9,7 +9,7 @@ export function MailPreview({ mail, folder }) {
     <article className={`mail-preview grid`}>
       <p className="mail-from">{fromOrTo}</p>
       <p className="mail-content-container">
-        <span className="mail-subject">{subject}</span> -{' '}
+        <span className="mail-subject">{subject} - </span>{' '}
         <span className="mail-body">{body}</span>
       </p>
       <p className="mail-sent-at">{utilService.getRelativeTime(sentAt)}</p>

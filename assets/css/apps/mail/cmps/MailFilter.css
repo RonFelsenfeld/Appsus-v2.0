@@ -1,12 +1,29 @@
 .mail-filter {
   margin-block: 1em;
+  gap: 2em;
+}
+
+.mail-filter .btn-toggle-menu {
+  border: none;
+  background-color: transparent;
+  display: none;
+}
+
+.mail-filter .btn-toggle-menu::before {
+  font-family: faSolid;
+  content: '\f0c9';
+  font-size: 1.5em;
+  color: var(--main-fn-color);
 }
 
 .mail-filter form {
-  gap: 1.5em;
+  flex-grow: 1;
+  gap: 2em;
 }
 
 .mail-filter .filter-txt {
+  flex-grow: 1;
+
   width: 60%;
 
   padding: 1em;

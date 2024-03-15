@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function MailFilter({ onSetFilter, filterBy, folder }) {
+export function MailFilter({ onSetFilter, filterBy, folder, setIsMenuOpen }) {
   const [filterToEdit, setFilterToEdit] = useState(filterBy)
 
   useEffect(() => {
@@ -14,7 +14,12 @@ export function MailFilter({ onSetFilter, filterBy, folder }) {
   }
 
   return (
-    <section className="mail-filter">
+    <section className={'mail-filter flex align-center'}>
+      <button
+        className="btn-toggle-menu"
+        onClick={() => setIsMenuOpen(prevIsOpen => !prevIsOpen)}
+      ></button>
+
       <form className="flex align-center">
         <input
           className="filter-txt"

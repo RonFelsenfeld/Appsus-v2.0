@@ -1,36 +1,37 @@
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .wrap {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .align-center {
-    align-items: center;
+  align-items: center;
 }
 
 .space-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
+
 .space-around {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .grid {
-    display: grid;
+  display: grid;
 }
 
 .clean-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

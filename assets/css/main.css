@@ -9,8 +9,6 @@
 
 /* Views */
 @import './views/home.css';
-@import './apps/note/views/NoteIndex.css';
-@import './apps/mail/views/MailIndex.css';
 
 /* Cmps */
 @import './cmps/UserMsg.css';
@@ -19,6 +17,7 @@
 /* Mail */
 
 /* Views */
+@import './apps/mail/views/MailIndex.css';
 
 /* Cmps */
 @import './apps/mail/cmps/MailList.css';
@@ -32,6 +31,7 @@
 /* Note */
 
 /* Views */
+@import './apps/note/views/NoteIndex.css';
 
 /* Cmps */
 @import './apps/note/cmps/note-preview.css';
@@ -42,4 +42,6 @@
 @import './apps/note/cmps/note-video.css';
 @import './apps/note/cmps/note-todos.css';
 @import './apps/note/cmps/NoteList.css';
-/* @import './apps/note/cmps/note-edit.css'; */
+
+/* Media Queries */
+@import './setup/mq.css';
