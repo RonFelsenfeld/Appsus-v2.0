@@ -16,9 +16,6 @@ export const noteService = {
     getEmptyTodosNote,
     getEmptyVideoNote,
     getEmbedUrl
-    
-    // getDefaultFilter,
-    // getFilterFromParams
 }
 // For Debug only
 window.cs = noteService
@@ -32,11 +29,10 @@ function query() {
         })
 
 }
-// notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
+
 
 function get(noteId) {
     return storageService.get(NOTE_KEY, noteId)
-    // .then(note => _setNextPrevNoteId(note))
     // return axios.get(NOTE_KEY, noteId)
 }
 
@@ -69,6 +65,7 @@ function getEmptyNote(title = '', txt = '') {
         }
     }
 }
+
 function getEmptyAllNote() {
     return {
         id: '',
@@ -81,6 +78,7 @@ function getEmptyAllNote() {
         info: null
     }
 }
+
 function getEmptyImgNote() {
     return {
         id: '',
@@ -96,6 +94,7 @@ function getEmptyImgNote() {
         }
     }
 }
+
 function getEmptyVideoNote() {
     return {
         id: '',
@@ -111,6 +110,7 @@ function getEmptyVideoNote() {
         }
     }
 }
+
 function getEmptyTodosNote() {
     return {
         id: '',
@@ -134,16 +134,6 @@ function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
     note.id = utilService.makeId()
     return note
 }
-// function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
-//     const note = getEmptyNote(title, txt)
-//     note.id = utilService.makeId()
-//     return note
-// }
-// function _createNote(title = 'this is the way', txt = 'Fullstack me baby!') {
-//     const note = getEmptyNote(title, txt)
-//     note.id = utilService.makeId()
-//     return note
-// }
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -166,21 +156,6 @@ function _createNotes() {
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
-
-
-
-// function getDefaultFilter() {
-//     return { txt: '', minSpeed: 50, desc: '' }
-// }
-
-// function getFilterFromParams(searchParams = {}) {
-//     const defaultFilter = getDefaultFilter()
-//     return {
-//         txt: searchParams.get('txt') || defaultFilter.txt,
-//         minSpeed: searchParams.get('minSpeed') || defaultFilter.minSpeed,
-//         desc: searchParams.get('desc') || defaultFilter.desc
-//     }
-// }
 
 
 function getEmbedUrl(url) {

@@ -41,55 +41,52 @@ export function AddNote({ addNote }) {
     setNewNote(noteService.getEmptyAllNote())
   }
 
+
+
   function onSelect(type) {
     switch (type) {
       case 'NoteImg':
         setNewNote(noteService.getEmptyImgNote())
         setPlaceholder('Enter img URL')
 
-        break
+        break;
       case 'NoteVideo':
         setNewNote(noteService.getEmptyVideoNote())
         setPlaceholder('Enter Video URL')
 
-        break
+        break;
       case 'NoteTodo':
         setNewNote(noteService.getEmptyTodosNote())
-        setPlaceholder("Enter List (seperated by ' , ')")
+        setPlaceholder('Enter List (seperated by \' , \')')
 
-        break
+        break;
       case 'NoteTxt':
         setNewNote(noteService.getEmptyNote())
         setPlaceholder('Take a note...')
-        break
+        break;
     }
   }
-  return (
-    <div className="add-note-form flex column space-between">
-      <form className="flex align-center" onSubmit={onAddNote}>
-        <label htmlFor="add"></label>
-        <input
-          type="text"
-          id="add"
-          name="txt"
-          placeholder={placeholder}
-          onChange={handleChange}
-          value={noteInput}
-        />
-        <button className="add-note-btn fa add"></button>
-      </form>
-      <div className="type-selector flex space-around">
-        <button onClick={() => onSelect('NoteImg')} className="fa img"></button>
-        <button
-          onClick={() => onSelect('NoteVideo')}
-          className="fa video"
-        ></button>
-        <button
-          onClick={() => onSelect('NoteTodo')}
-          className="fa todo"
-        ></button>
-        <button onClick={() => onSelect('NoteTxt')} className="fa txt"></button>
-      </div>
+
+  return (<div className="add-note-form flex column space-between">
+    <form className="flex align-center" onSubmit={onAddNote}>
+      <label htmlFor="add"></label>
+      <input
+        type="text"
+        id="add"
+        name='txt'
+        placeholder={placeholder}
+        onChange={handleChange}
+        value={noteInput}
+        autoComplete="off"
+      />
+      <button className="add-note-btn fa add"></button>
+    </form>
+    <div className="type-selector flex space-around">
+      <button onClick={() => onSelect('NoteImg')} className="fa img"></button>
+      <button onClick={() => onSelect('NoteVideo')} className="fa video"></button>
+      <button onClick={() => onSelect('NoteTodo')} className="fa todo"></button>
+      <button onClick={() => onSelect('NoteTxt')} className="fa txt"></button>
     </div>
+  </div>
   )
 }
