@@ -74,7 +74,7 @@ function getEmptyAllNote() {
         type: '',
         isPinned: false,
         style: {
-            backgroundColor: '#f6f8fc',
+            backgroundColor: 'rgb(226, 246, 211)',
         },
         info: null
     }
@@ -87,7 +87,7 @@ function getEmptyImgNote() {
         type: 'NoteImg',
         isPinned: false,
         style: {
-            backgroundColor: '#f6f8fc',
+            backgroundColor: '#FFD59E',
         },
         info: {
             url: '',
@@ -103,7 +103,7 @@ function getEmptyVideoNote() {
         type: 'NoteVideo',
         isPinned: false,
         style: {
-            backgroundColor: '#f6f8fc',
+            backgroundColor: 'rgb(246, 226, 221)',
         },
         info: {
             src: '',
