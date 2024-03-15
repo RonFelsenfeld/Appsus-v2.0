@@ -42,6 +42,7 @@ export function NoteIndex() {
     function addNote(note) {
         noteService.save(note)
             .then((updatedNote) => {
+                console.log('updated',updatedNote);
                 setNotes(prevNotes => [updatedNote, ...prevNotes])
                 showSuccessMsg(`adding`)
             })

@@ -29,7 +29,7 @@ export function EditNote({ note, onUpdateNote, setIsEditing }) {
                 // onEditNote()
                 onUpdateNote(savedNote)
                 setIsEditing(false)
-                // navigate('/note')
+
             })
     }
 

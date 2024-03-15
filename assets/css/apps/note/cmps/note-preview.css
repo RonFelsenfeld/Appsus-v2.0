@@ -8,6 +8,10 @@
     border: 1px solid lightgray;
 }
 
+.media{
+    height: 250px;
+}
+
 .note-preview:hover {
     box-shadow: 0px 3px 4px rgba(0, 0, 0, .35);
     cursor: pointer;
@@ -26,6 +30,7 @@
 }
 
 .note-actions {
+    padding-bottom: 1em;
     opacity: 0;
     transition: .28s;
 }

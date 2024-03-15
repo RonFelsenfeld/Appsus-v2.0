@@ -1,13 +1,13 @@
 .add-note-form input{
     width: 25em;
     box-shadow: -2px 3px 4px rgba(0,0,0,.3);
-
-  padding: 1em;
-  border: none;
-  border-radius: 0.8em;
-
-  background-color: var(--clr-gray1);
-  font-size: 1.5em;
+    
+    padding: 1em;
+    border: none;
+    border-radius: 0.8em;
+    
+    background-color: var(--clr-gray1);
+    font-size: 1.5em;
 }
 
 .add-note-form{
@@ -26,7 +26,12 @@
 }
 
 .type-selector{
-    padding: 2em;
+    box-shadow: -2px 3px 4px rgba(0,0,0,.3);
+    margin-top: 1em;
+    background-color: var(--clr-gray1);
+    border: none;
+    border-radius: 0.8em;
+    /* padding: 2em; */
     width: 20em;
 }
 

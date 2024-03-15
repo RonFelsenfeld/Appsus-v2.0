@@ -2,6 +2,8 @@ const { useState } = React
 
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+
 
 export function AddNote({ addNote }) {
   const [newNote, setNewNote] = useState(noteService.getEmptyAllNote())
@@ -28,13 +30,17 @@ export function AddNote({ addNote }) {
       case 'NoteTodo':
         const todosArr = noteInput.split(',')
         newNote.info.todos = todosArr.map(todo => {
-          return { id: utilService.makeId(), txt: todo, doneAt: new Date() }
+          return { id: utilService.makeId(), txt: todo, doneAt: null }
         })
 
         break
       case 'NoteTxt':
         newNote.info.txt = noteInput
         break
+    }
+    if (!noteInput) {
+      showErrorMsg('no note input')
+      return
     }
     addNote(newNote)
     setNoteInput('')

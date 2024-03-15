@@ -13,7 +13,7 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 
 
 
-export function NotePreview({ note, onRemoveNote, onUpdateNote,onCopyClick }) {
+export function NotePreview({ note, onRemoveNote, onUpdateNote, onCopyClick }) {
     const [isEditing, setIsEditing] = useState(false)
     const [isColorPicker, setIsColorPicker] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(note)
@@ -34,8 +34,10 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote,onCopyClick }) {
         noteToEdit.isPinned = !noteToEdit.isPinned
         onUpdateNote(noteToEdit)
     }
+    const dynClass = note.type === 'NoteVideo' || note.type === 'NoteImg' ? 'media' : ''
 
-    return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }} className="note-preview flex space-between column">
+    return <div onClick={() => setIsEditing(true)} style={{ ...noteToEdit.style }}
+        className={`note-preview flex space-between column ${dynClass}`}>
 
         {!note.isPinned &&
             <a className="fa pin" onClick={() => {
