@@ -22,7 +22,20 @@ export function MailList({
     return ''
   }
 
-  if (!mails.length) return <div className="no-mails-msg">No mails to show</div>
+  function getIsReadIconClass(mail) {
+    if (mail.isRead) return 'read'
+    else return 'unread'
+  }
+
+  function getIsReadTitle(mail) {
+    if (mail.isRead) return 'Mark as unread'
+    else return 'Mark as read'
+  }
+
+  if (!mails.length)
+    return (
+      <div className="no-mails-msg">{`No mails in the ${folder} folder`}</div>
+    )
 
   return (
     <React.Fragment>
@@ -32,12 +45,10 @@ export function MailList({
         {mails.map(mail => (
           <li
             key={mail.id}
-            className={`mail-preview-container ${getIsReadClass(
-              mail
-            )} flex align center`}
+            className={`mail-preview-container grid ${getIsReadClass(mail)}`}
           >
             <button
-              title="Starred"
+              title="Star"
               className={`btn ${isStarredClass(mail)}`}
               onClick={() => onToggleStarred(mail)}
             ></button>
@@ -50,6 +61,20 @@ export function MailList({
                 onClick={() => onReadMail(mail.id)}
               />
             </Link>
+
+            <div className="actions-container flex align-center justify-center">
+              <button
+                title="Delete"
+                className={`btn btn-delete`}
+                onClick={() => onRemoveMail(mail)}
+              ></button>
+
+              <button
+                title={`${getIsReadTitle(mail)}`}
+                className={`btn btn-${getIsReadIconClass(mail)}`}
+                onClick={() => onReadMail(mail.id, true)}
+              ></button>
+            </div>
           </li>
         ))}
       </ul>

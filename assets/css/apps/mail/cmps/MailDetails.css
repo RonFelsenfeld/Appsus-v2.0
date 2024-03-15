@@ -1,6 +1,19 @@
 .mail-details {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr;
+  grid-template-rows: repeat(3, 50px) 1fr;
+  grid-template-areas:
+    'image subject actions'
+    'image from time'
+    'image to to'
+    'image body body';
+
+  column-gap: 1em;
+  align-items: end;
+
   background-color: var(--secondary-base);
   padding: 1.5em;
+  min-height: 100dvh;
 }
 
 .mail-details .btn {
@@ -26,34 +39,62 @@
 }
 
 .mail-details .btn-go-back::before {
-  content: '\f060';
+  content: '\f2f6';
 }
 
 .mail-details .btn-delete::before {
   content: '\f1f8';
 }
 
+.mail-details .action-container {
+  grid-area: actions;
+  justify-self: end;
+  align-self: start;
+}
+
+.mail-details .mail-subject {
+  grid-area: subject;
+  font-size: 2.5em;
+}
+
+.mail-details .user-img {
+  grid-area: image;
+  grid-row: 2;
+
+  width: 60px;
+  height: 60px;
+
+  transform: translateY(50%);
+}
+
 .mail-details .mail-from {
+  grid-area: from;
+  margin-inline-end: 1em;
+
   font-size: 2.5em;
   font-family: RobotoBold, serif;
-  margin-inline-end: 1em;
 }
 
 .mail-details .mail-to {
+  grid-area: to;
+  align-self: start;
+
   font-size: 1.5em;
   font-family: RobotoBold, serif;
   color: rgb(163, 163, 163);
 }
 
 .mail-details .mail-sent-at {
+  grid-area: time;
+  justify-self: center;
+
   font-size: 1.5em;
 }
 
-.mail-details .mail-subject {
-  font-size: 2.5em;
-}
-
 .mail-details .mail-body {
+  grid-area: body;
+  align-self: start;
+
   font-size: 2em;
 }
 

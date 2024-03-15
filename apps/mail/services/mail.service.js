@@ -22,7 +22,7 @@ export const emailService = {
 _createMails()
 
 // For Debug only
-window.ms = emailService
+// window.ms = emailService
 
 function query(filterBy = getDefaultCriteria(), sortBy = getDefaultSortBy()) {
   return storageService.query(MAIL_KEY).then(mails => {
@@ -113,31 +113,6 @@ function getFilterFromParams(searchParams = {}) {
 
 ////////////////////////////////////////////////////
 
-function _createMail() {
-  const newMail = getEmptyMail()
-
-  newMail.id = utilService.makeId()
-  newMail.subject = _getRndSubject()
-  newMail.body = _getRndBody() + '.'
-  newMail.sentAt = _getRandomTimestamp()
-  newMail.from = _getRndEmailAddress()
-  newMail.to = loggedUser.email
-
-  return newMail
-}
-
-function _createMails() {
-  let mails = utilService.loadFromStorage(MAIL_KEY)
-  if (!mails || !mails.length) {
-    mails = []
-    for (let i = 0; i < 20; i++) {
-      mails.push(_createMail())
-    }
-
-    utilService.saveToStorage(MAIL_KEY, mails)
-  }
-}
-
 function _filterByFolder(mails, folder) {
   let filteredMails
 
@@ -159,7 +134,7 @@ function _filterByFolder(mails, folder) {
       )
       break
     case 'starred':
-      filteredMails = mails.filter(mail => mail.isStarred)
+      filteredMails = mails.filter(mail => mail.isStarred && !mail.removedAt)
       break
   }
 
@@ -180,6 +155,72 @@ function _sortMails(mails, sortBy) {
   }
 
   return mails
+}
+
+////////////////////////////////////////////////////
+
+function _createMails() {
+  let mails = utilService.loadFromStorage(MAIL_KEY)
+  if (!mails || !mails.length) {
+    mails = []
+    for (let i = 0; i < 50; i++) {
+      mails.push(_createMail())
+    }
+
+    for (let i = 0; i < 40; i++) {
+      mails.push(_createSentMail())
+    }
+
+    for (let i = 0; i < 40; i++) {
+      mails.push(_createTrashMail())
+    }
+
+    utilService.saveToStorage(MAIL_KEY, mails)
+  }
+}
+
+// Functions for demo data
+
+function _createMail() {
+  const newMail = getEmptyMail()
+
+  newMail.id = utilService.makeId()
+  newMail.subject = _getRndSubject()
+  newMail.body = _getRndBody() + '.'
+  newMail.sentAt = _getRandomTimestamp()
+  newMail.from = _getRndEmailAddress()
+  newMail.to = loggedUser.email
+  newMail.isRead = Math.random() > 0.5
+  newMail.isStarred = Math.random() > 0.7
+
+  return newMail
+}
+
+function _createSentMail() {
+  const newMail = getEmptyMail()
+
+  newMail.id = utilService.makeId()
+  newMail.subject = _getRndSubject()
+  newMail.body = _getRndBody() + '.'
+  newMail.sentAt = _getRandomTimestamp()
+  newMail.from = loggedUser.email
+  newMail.to = _getRndEmailAddress()
+
+  return newMail
+}
+
+function _createTrashMail() {
+  const newMail = getEmptyMail()
+
+  newMail.id = utilService.makeId()
+  newMail.subject = _getRndSubject()
+  newMail.body = _getRndBody() + '.'
+  newMail.sentAt = _getRandomTimestamp()
+  newMail.from = _getRndEmailAddress()
+  newMail.to = loggedUser.email
+  newMail.removedAt = _getRandomTimestamp()
+
+  return newMail
 }
 
 function _getRndEmailAddress() {
@@ -324,7 +365,7 @@ function _getRndBody() {
   ]
 
   let message = ''
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 100; i++) {
     message += realWords[Math.floor(Math.random() * realWords.length)] + ' '
   }
 

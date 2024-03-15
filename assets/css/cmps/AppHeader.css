@@ -1,26 +1,61 @@
-header {
+.app-header {
+  padding: 20px 0;
+  font-size: 1.6em;
+
   background: var(--main-bg-color);
   border-bottom: 2px solid white;
   font-family: RobotoRegular, serif;
 }
 
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  font-size: 1.6em;
+.app-header .main-nav {
+  gap: 1em;
+  margin-inline-end: 1em;
 }
 
-nav a {
-  margin: 0.5em;
+.app-header .main-nav .btn-nav {
+  background-color: transparent;
+  border: none;
 }
 
-nav a:active {
-  color: purple;
+.app-header .main-nav .btn-nav::before {
+  font-family: faSolid;
+  font-size: 2em;
+  color: var(--main-fn-color);
+  transition: color 0.3s;
 }
 
-nav a.active {
-  color: darkblue;
-  font-weight: bold;
-  text-decoration: overline;
+.app-header .main-nav .btn-home::before {
+  content: '\f015';
+}
+
+.app-header .main-nav .btn-about::before {
+  content: '\f05a';
+}
+
+.app-header .main-nav .btn-mail::before {
+  content: '\f0e0';
+}
+
+.app-header .main-nav .btn-note::before {
+  content: '\f249';
+}
+
+.app-header .main-nav a.active .btn-home::before,
+.app-header .main-nav .btn-home:hover::before {
+  color: var(--nav-home-clr);
+}
+
+.app-header .main-nav a.active .btn-about::before,
+.app-header .main-nav .btn-about:hover::before {
+  color: var(--nav-about-clr);
+}
+
+.app-header .main-nav a.active .btn-mail::before,
+.app-header .main-nav .btn-mail:hover::before {
+  color: var(--nav-mail-clr);
+}
+
+.app-header .main-nav a.active .btn-note::before,
+.app-header .main-nav .btn-note:hover::before {
+  color: var(--nav-note-clr);
 }

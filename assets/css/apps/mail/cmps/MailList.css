@@ -1,12 +1,20 @@
 .mail-list {
-  background-color: var(--secondary-base);
+  height: 80dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   border-block-start: 1px solid var(--clr-mail-border);
   margin-block-end: 0.5em;
+
+  background-color: var(--secondary-base);
 }
 
 .mail-list .mail-preview-container {
+  grid-template-columns: 35px 1fr;
+  position: relative;
   font-family: RobotoBold, serif;
-  background-color: var(--secondary-1);
+  background-color: var(--secondary-base);
+  flex-grow: 1;
 }
 
 .mail-list .mail-preview-container:hover {
@@ -18,17 +26,25 @@
 
 .mail-list .mail-preview-container.read {
   font-family: RobotoRegular, serif;
-  background-color: var(--secondary-base);
+  background-color: var(--secondary-1);
 }
 
 .mail-list .mail-preview-container .btn {
-  justify-self: start;
-  background-color: transparent;
+  justify-self: center;
+
+  padding: 0.5em;
   border: none;
+  border-radius: 50%;
+
+  background-color: transparent;
+}
+
+.mail-list .mail-preview-container .btn:hover {
+  background-color: var(--clr-gray1);
 }
 
 .mail-list .mail-preview-container .btn::before {
-  font-size: 1em;
+  font-family: faSolid;
 }
 
 .mail-list .mail-preview-container .btn.unstarred::before {
@@ -37,12 +53,40 @@
 }
 
 .mail-list .mail-preview-container .btn.starred::before {
-  font-family: faSolid;
   content: '\f005';
   color: #ffd43b;
 }
 
-.no-mails-msg,
+.mail-list .mail-preview-container .actions-container {
+  position: absolute;
+  inset: 50% 0.5em auto auto;
+
+  transform: translate(100%, -50%);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.mail-list .mail-preview-container:hover .actions-container {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.mail-list .actions-container .btn-delete::before {
+  content: '\f2ed';
+}
+
+.mail-list .actions-container .btn-read::before {
+  content: '\f0e0';
+}
+
+.mail-list .actions-container .btn-unread::before {
+  content: '\f2b6';
+}
+
+.no-mails-msg {
+  font-size: 2em;
+}
+
 .unread {
   font-size: 2em;
   font-family: RobotoBold, serif;

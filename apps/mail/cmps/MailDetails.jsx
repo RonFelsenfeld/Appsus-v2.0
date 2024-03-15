@@ -32,25 +32,28 @@ export function MailDetails() {
   if (!mail) return <div className="loading">loading details...</div>
   const { subject, body, to, from, sentAt } = mail
   return (
-    <section className="mail-details flex column">
+    <section className="mail-details">
       <div className="action-container">
-        <Link to="/mail">
-          <button className="btn btn-go-back" title="Go back"></button>
-        </Link>
         <button
           className="btn btn-delete"
           title="Delete"
           onClick={() => onRemoveMail(mail)}
         ></button>
+
+        <Link to="/mail">
+          <button className="btn btn-go-back" title="Go back"></button>
+        </Link>
       </div>
 
-      <div>
-        <span className="mail-from">{from}</span>
-        <span className="mail-to">{`<${to}>`}</span>
-        <span className="mail-sent-at">{utilService.formatDate(sentAt)}</span>
-        <h1 className="mail-subject">{subject}</h1>
-        <p className="mail-body">{body}</p>
-      </div>
+      <h1 className="mail-subject">{subject}</h1>
+
+      <img className="user-img" src="assets/img/user-img.png" alt="user-img" />
+
+      <span className="mail-from">{from}</span>
+      <span className="mail-to">{`to: <${to}>`}</span>
+      <span className="mail-sent-at">{utilService.formatDate(sentAt)}</span>
+
+      <p className="mail-body">{body}</p>
     </section>
   )
 }

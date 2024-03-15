@@ -1,5 +1,5 @@
 .mail-preview {
-  grid-template-columns: 200px 1fr 100px;
+  grid-template-columns: 200px 1fr 170px;
   align-items: center;
 
   padding: 0.5em;
@@ -14,12 +14,11 @@
 }
 
 .mail-preview .mail-content-container {
-  font-family: RobotoRegular;
-
-  line-height: 1.5;
-  overflow-y: hidden;
-
   margin-inline-end: 3em;
+
+  font-family: RobotoRegular;
+  line-height: 1.7;
+  overflow: hidden;
   text-align: justify;
 }
 
@@ -33,19 +32,6 @@
 
 .mail-preview .mail-sent-at {
   justify-self: end;
-  padding-inline-end: 1em;
-}
-
-.mail-preview .btn-remove {
-  border: none;
-
-  background-color: transparent;
-  font-weight: 700;
-  font-size: 1em;
-
-  opacity: 0;
-}
-
-.mail-preview:hover .btn-remove {
-  opacity: 1;
+  padding-inline-end: 4em;
+  transition: opacity 0.3s, transform 0.5s;
 }

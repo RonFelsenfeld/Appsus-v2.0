@@ -14,5 +14,10 @@
   --clr-gray1: #efeff1;
   --clr-gray-1: #aaadb0;
 
+  --nav-home-clr: rgb(234, 134, 95);
+  --nav-about-clr: rgb(80, 229, 98);
+  --nav-mail-clr: rgb(37, 139, 211);
+  --nav-note-clr: rgb(215, 215, 59);
+
   --clr-mail-border: rgba(128, 128, 128, 0.207);
 }

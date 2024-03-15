@@ -51,11 +51,12 @@ export function MailIndex() {
       )
   }
 
-  function onReadMail(mailId) {
+  function onReadMail(mailId, isToggling = false) {
     emailService
       .get(mailId)
       .then(mail => {
-        if (!mail.isRead) mail.isRead = true
+        if (isToggling) mail.isRead = !mail.isRead
+        else mail.isRead = true
         return mail
       })
       .then(emailService.save)
@@ -108,11 +109,10 @@ export function MailIndex() {
   }
 
   function onRemoveMail(mail) {
-    console.log(mail)
     if (!mail.removedAt) {
       moveToTrash(mail)
     } else {
-      removeMail()
+      removeMail(mail)
     }
   }
 
@@ -121,7 +121,9 @@ export function MailIndex() {
     emailService
       .save(mail)
       .then(() => {
-        setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
+        setMails(prevMails =>
+          prevMails.filter(currMail => currMail.id !== mail.id)
+        )
         showSuccessMsg(`Mail moved to trash`)
         navigate('/mail')
       })
@@ -131,12 +133,14 @@ export function MailIndex() {
       })
   }
 
-  function removeMail() {
+  function removeMail(mail) {
     emailService
-      .remove(mailId)
+      .remove(mail.id)
       .then(() => {
-        setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
-        showSuccessMsg(`Mail removed successfully (${mailId})`)
+        setMails(prevMails =>
+          prevMails.filter(currMail => currMail.id !== mail.id)
+        )
+        showSuccessMsg(`Mail removed successfully (${mail.id})`)
         navigate('/mail')
       })
       .catch(err => {

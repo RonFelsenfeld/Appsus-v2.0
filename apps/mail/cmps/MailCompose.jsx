@@ -3,27 +3,48 @@ const { useState, useEffect, useRef } = React
 import { emailService, loggedUser } from '../services/mail.service.js'
 
 export function MailCompose({ onSendMail, onCloseMail }) {
-  const [mailDetails, setMailsDetails] = useState(emailService.getEmptyMail())
+  const [mailDetails, setMailDetails] = useState(emailService.getEmptyMail())
   const recipientsInputRef = useRef()
+  // const draftIntervalRef = useRef()
 
   useEffect(() => {
     recipientsInputRef.current.focus()
+
+    mailDetails.from = loggedUser.email
+    // saveToDraft()
+
+    // return () => clearInterval(draftIntervalRef.current)
   }, [])
 
+  // function saveToDraft() {
+  //   console.log('saving')
+  //   emailService
+  //     .save(mailDetails)
+  //     .then(savedMail => {
+  //       setMailDetails(prevDetails => ({ ...prevDetails, id: savedMail.id }))
+  //     })
+  //     .catch(err => {
+  //       console.error('Had issues with saving to draft :', err)
+  //     })
+  // }
+
   function handleChange({ target }) {
+    // if (!draftIntervalRef.current) {
+    //   draftIntervalRef.current = setInterval(safeToDraft, 2000)
+    // }
+
     let { value, name: field } = target
-    setMailsDetails(prevDetails => ({ ...prevDetails, [field]: value }))
+    setMailDetails(prevDetails => ({ ...prevDetails, [field]: value }))
   }
 
   function onFinishMail(ev) {
     ev.preventDefault()
-
-    mailDetails.from = loggedUser.email
     mailDetails.sentAt = Date.now()
     onSendMail(mailDetails)
   }
 
   const { to, subject, body } = mailDetails
+
   return (
     <section className="mail-compose flex column">
       <header className="new-mail-header flex space-between">
