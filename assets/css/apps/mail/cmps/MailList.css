@@ -4,6 +4,35 @@
   margin-block-end: 0.5em;
 }
 
+.mail-list .mail-preview-container {
+  font-family: RobotoBold, serif;
+  background-color: var(--secondary-1);
+}
+
+.mail-list .mail-preview-container:hover {
+  box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0,
+    0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  z-index: 2;
+  scale: 1.001;
+}
+
+.mail-list .mail-preview-container.read {
+  font-family: RobotoRegular, serif;
+  background-color: var(--secondary-base);
+}
+
+.mail-list .mail-preview-container .btn-star {
+  justify-self: start;
+  background-color: transparent;
+  border: none;
+}
+
+.mail-list .mail-preview-container .btn-star::before {
+  font-family: faRegular;
+  content: '\f005';
+  font-size: 1em;
+}
+
 .no-mails-msg,
 .unread {
   font-size: 2em;

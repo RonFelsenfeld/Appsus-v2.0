@@ -2,3 +2,7 @@
   display: grid;
   grid-template-columns: 256px 1fr 10px;
 }
+
+.loading-msg {
+  font-size: 2em;
+}

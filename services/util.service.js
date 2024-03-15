@@ -155,8 +155,15 @@ function getRelativeTime(timestamp) {
     ]
     return daysOfWeek[targetDate.getDay()]
   } else if (weeks < 5) {
-    return `${targetDate.toLocaleDateString('he')}`
+    return `${targetDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+    })}`
   } else {
-    return targetDate.toLocaleDateString('he')
+    return targetDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
   }
 }

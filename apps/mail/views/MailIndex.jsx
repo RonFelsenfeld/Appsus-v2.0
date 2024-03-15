@@ -128,7 +128,7 @@ export function MailIndex() {
       })
   }
 
-  if (!mails) return <div>loading...</div>
+  if (!mails) return <div className="loading-msg">loading...</div>
 
   const { folder, txt } = filterBy
   return (

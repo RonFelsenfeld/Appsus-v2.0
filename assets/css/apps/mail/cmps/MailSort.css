@@ -7,8 +7,8 @@
 .sort-section .btn {
   position: relative;
   border-radius: 2em;
-  border: none;
-  padding: 1em;
+  border: 1px solid var(--clr-gray-1);
+  padding: 0.8em;
 
   font-family: RobotoBold;
   background-color: white;

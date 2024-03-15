@@ -3,14 +3,10 @@ import { utilService } from '../../../services/util.service.js'
 export function MailPreview({ mail, onRemoveMail, folder }) {
   const { from, to, subject, sentAt, isRead, body } = mail
 
-  const isReadClass = isRead || folder !== 'inbox' ? 'read' : ''
-
   const fromOrTo = folder === 'sent' ? to : from
 
   return (
-    <article className={`mail-preview grid ${isReadClass}`}>
-      <button className="btn-star"></button>
-
+    <article className={`mail-preview grid`}>
       <p className="mail-from">{fromOrTo}</p>
 
       <p className="mail-content-container">

@@ -11,6 +11,15 @@ export function MailList({
   onSetSortBy,
   sortBy,
 }) {
+  function onStarredMail(mailId) {
+    console.log(mailId)
+  }
+
+  function getIsReadClass(mail) {
+    if (mail.isRead || folder !== 'inbox') return 'read'
+    return ''
+  }
+
   if (!mails.length) return <div className="no-mails-msg">No mails to show</div>
 
   return (
@@ -19,7 +28,19 @@ export function MailList({
 
       <ul className="mail-list clean-list">
         {mails.map(mail => (
-          <li key={mail.id} onClick={() => onReadMail(mail.id)}>
+          <li
+            key={mail.id}
+            className={`mail-preview-container ${getIsReadClass(
+              mail
+            )} flex align center`}
+            onClick={() => onReadMail(mail.id)}
+          >
+            <button
+              title="Starred"
+              className="btn-star"
+              onClick={() => onStarredMail(mail.id)}
+            ></button>
+
             <Link to={`/mail/${mail.id}`}>
               <MailPreview
                 mail={mail}
