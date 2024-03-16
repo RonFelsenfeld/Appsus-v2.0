@@ -1,5 +1,4 @@
-const { useState, useEffect } = React
-import { noteService } from '../services/note.service.js'
+const { useState } = React
 
 import { EditNote } from './EditNote.jsx'
 

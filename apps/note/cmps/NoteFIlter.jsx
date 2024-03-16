@@ -12,6 +12,7 @@ export function NoteFilter({onSetFilter,filterBy}) {
         <label htmlFor="filter">Filter by  </label>
         <select onChange={handleFilterChange} name="filter" id="filter">
             <option value="">ALL</option>
+            <option value="pinned">Pinned</option>
             <option value="NoteTxt">Text</option>
             <option value="NoteVideo">Video</option>
             <option value="NoteImg">Image</option>

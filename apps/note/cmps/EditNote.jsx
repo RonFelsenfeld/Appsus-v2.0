@@ -1,9 +1,7 @@
 const { useState, useEffect, useRef } = React
 const { useNavigate, } = ReactRouter
 
-
 import { noteService } from "../../note/services/note.service.js"
-
 
 export function EditNote({ note, onUpdateNote, setIsEditing }) {
     const [noteToEdit, setNoteToEdit] = useState(note)
@@ -26,13 +24,11 @@ export function EditNote({ note, onUpdateNote, setIsEditing }) {
         ev.preventDefault()
         noteService.save(noteToEdit)
             .then((savedNote) => {
-                // onEditNote()
                 onUpdateNote(savedNote)
                 setIsEditing(false)
 
             })
     }
-
 
     if (!noteToEdit) return <h1>loading...</h1>
     const title = noteToEdit.info.title

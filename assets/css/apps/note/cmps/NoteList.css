@@ -22,6 +22,7 @@
     font-size: 2em;
 
 }
+
 .fa.add::before {
     font-family: faRegular;
     content: "\f044";
@@ -49,6 +50,7 @@
     font-size: 2em;
 
 }
+
 .fa.copy::before {
     font-family: faSolid;
     content: "\f24d";
@@ -62,12 +64,14 @@
     font-size: 2em;
 
 }
+
 .fa.mail::before{
     font-family: faSolid;
     content: "\f0e0";
     font-size: 2em;
 
 }
+
 .fa.trash::before{
     font-family: faSolid;
     content: "\f2ed";

@@ -9,9 +9,6 @@ import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 
 import { noteService } from "../services/note.service.js"
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-
-
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote, onCopyClick }) {
     const [isEditing, setIsEditing] = useState(false)
@@ -72,7 +69,6 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote, onCopyClick }) {
 }
 
 function DynamicCmp(props) {
-    // console.log(props);
     switch (props.note.type) {
         case 'NoteTxt':
             return <NoteTxt {...props} />

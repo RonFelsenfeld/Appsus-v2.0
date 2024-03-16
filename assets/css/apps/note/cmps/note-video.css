@@ -1,7 +1,8 @@
 .video-container{
-    padding: 1.1em;
+    padding: 2em;
 }
 
 iframe{
+    border: none;
     border-radius: 1em;
 }

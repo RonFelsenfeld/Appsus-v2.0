@@ -1,6 +1,7 @@
 .filter-select{
     gap: 1em;
 }
+
 .filter-select label{
     font-size: 1.5em;
     color: var(--clr-gray2);

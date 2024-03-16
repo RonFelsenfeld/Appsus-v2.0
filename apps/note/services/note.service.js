@@ -19,9 +19,7 @@ export const noteService = {
 // For Debug only
 window.cs = noteService
 
-//param = filterBy = getDefaultFilter()
 function query(filterBy) {
-  console.log(filterBy)
   return storageService.query(NOTE_KEY)
     .then(notes => {
       if (filterBy === 'NoteTxt') {
@@ -39,7 +37,10 @@ function query(filterBy) {
         notes = notes.filter((note) => note.type === 'NoteTodo')
 
       }
-      // console.log(notes)
+      if (filterBy === 'pinned') {
+        notes = notes.filter((note) => note.isPinned === true)
+
+      }
       return notes
     })
 }
@@ -193,11 +194,11 @@ function _createNotes() {
         type: 'NoteVideo',
         isPinned: false,
         style: {
-          backgroundColor: 'rgb(211, 191, 219)',
+          backgroundColor: '#FFD59E',
         },
         info: {
           src: 'https://www.youtube.com/embed/tgbNymZ7vqY',
-          title: 'Muppet show',
+          title: 'relax',
         },
       },
       {
@@ -237,6 +238,20 @@ function _createNotes() {
             },
           ],
         },
+      },
+      {
+        id: utilService.makeId(),
+        createdAt: new Date(),
+        type: 'NoteVideo',
+        isPinned: false,
+        style: {
+          backgroundColor: 'rgb(246, 226, 221)',
+        },
+        info: {
+          // src: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+          src: 'https://www.youtube.com/embed/AReD1i06VMk',
+          title: 'chill',
+        }
       },
       {
         id: utilService.makeId(),
