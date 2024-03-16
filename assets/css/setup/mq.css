@@ -232,6 +232,10 @@
     margin-block-start: 3em;
   }
 
+  .about .about-main-title {
+    text-align: center;
+  }
+
   .about .about-img {
     place-self: center;
     width: 150px;

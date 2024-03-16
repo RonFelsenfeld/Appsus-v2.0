@@ -12,14 +12,14 @@ export function About() {
   return (
     <section className="about grid">
       <h1 className="about-main-title">
-        About Us - Meet the Dream Team Behind Mail&Keep
+        About Us - Meet the Dream Team Behind Mail & Keep
       </h1>
 
       <div className="content-container flex column">
         <p className="about-desc">Hey there!</p>
         <p className="about-desc">
           We are Ido and Ron, the dynamic duo behind{' '}
-          <span className="app-name">Mail&Keep</span>.
+          <span className="app-name">Mail & Keep</span>.
         </p>
         <p className="about-desc">
           We love coffee, coding, and making life a little easier one app at a
