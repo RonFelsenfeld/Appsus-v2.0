@@ -6,7 +6,7 @@ import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 
 export function AddNote({ addNote }) {
-  const [newNote, setNewNote] = useState(noteService.getEmptyAllNote())
+  const [newNote, setNewNote] = useState(noteService.getEmptyNote())
   const [noteInput, setNoteInput] = useState('')
   const [placeholder, setPlaceholder] = useState('Take a note...')
 
@@ -70,6 +70,8 @@ export function AddNote({ addNote }) {
         setNewNote(noteService.getEmptyNote())
         setPlaceholder('Take a note...')
         break;
+
+        default:
     }
   }
 
