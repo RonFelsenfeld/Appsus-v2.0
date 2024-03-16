@@ -1,0 +1,104 @@
+.about {
+  width: 70%;
+
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 100px 1fr 300px;
+  grid-template-areas:
+    'title title'
+    'txt image'
+    'contact contact';
+
+  column-gap: 4em;
+  margin: auto;
+}
+
+.about .about-main-title {
+  grid-area: title;
+  grid-column: 1 / -1;
+  place-self: center;
+
+  font-size: 2.6em;
+  font-family: RobotoBold, serif;
+}
+
+.about .app-name {
+  font-style: italic-reverse;
+}
+
+.about .content-container {
+  grid-area: txt;
+  align-self: center;
+  gap: 1em;
+}
+
+.about .about-desc {
+  font-size: 2em;
+}
+
+.about .about-img {
+  grid-area: image;
+  justify-self: end;
+
+  width: 350px;
+  border-radius: 50%;
+  background: rgb(168, 199, 250);
+  background: linear-gradient(
+    230deg,
+    rgba(168, 199, 250, 1) 33%,
+    rgba(254, 239, 195, 1) 66%
+  );
+}
+
+.about .personal-container {
+  grid-area: contact;
+  grid-column: 1 / -1;
+  place-self: center;
+  gap: 15em;
+
+  padding: 2em;
+  border-radius: 20px;
+
+  background-color: rgb(215, 215, 215);
+}
+
+.about .personal-details {
+  gap: 1.5em;
+}
+
+.about .personal-details .name {
+  font-family: RobotoBold, serif;
+  font-size: 1.8em;
+}
+
+.about .personal-details .personal-img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.about .personal-details .links-container {
+  justify-content: center;
+  gap: 2em;
+}
+
+.about .personal-details .links-container a::before {
+  font-family: faBrands;
+  font-size: 3.5em;
+  transition: color 0.3s;
+}
+
+.about .personal-details .links-container a.linkedin::before {
+  content: '\f08c';
+}
+
+.about .links-container a.github::before {
+  content: '\f09b';
+}
+
+.about .links-container a.blue:hover::before {
+  color: var(--clr-blue1);
+}
+
+.about .links-container a.yellow:hover::before {
+  color: var(--clr-yellow1);
+}

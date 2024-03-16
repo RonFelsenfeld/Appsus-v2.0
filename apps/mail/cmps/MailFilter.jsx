@@ -32,17 +32,18 @@ export function MailFilter({ onSetFilter, filterBy, folder, setIsMenuOpen }) {
         />
 
         {folder === 'inbox' && (
-          <div className="flex align-center">
-            <label htmlFor="unread" className="filter-read">
-              Unread Only
-            </label>
+          <div className="is-read-container flex column align-center">
             <input
+              className="is-read-input"
               type="checkbox"
               id="unread"
               name="isRead"
               onChange={handleChange}
               value={filterToEdit.isRead}
             />
+            <label htmlFor="unread" className="is-read-label"></label>
+
+            <span className="unread-only">Unread Only</span>
           </div>
         )}
       </form>

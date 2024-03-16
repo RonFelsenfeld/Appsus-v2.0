@@ -1,3 +1,91 @@
+@media (max-width: 940px) {
+  .about {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 50px 1fr auto;
+    grid-template-areas:
+      'title title'
+      'txt txt'
+      'contact image';
+
+    width: 90%;
+    row-gap: 4em;
+    margin-block-start: 10em;
+  }
+
+  .about .about-img {
+    place-self: center;
+    width: 200px;
+    height: 200px;
+  }
+
+  .about .about-main-title {
+    justify-self: center;
+
+    font-size: 2em;
+  }
+
+  .about .about-desc {
+    font-size: 1.6em;
+  }
+
+  .about .personal-container {
+    gap: 3em;
+  }
+
+  .about .personal-container {
+    place-self: start;
+  }
+}
+
+@media (max-width: 750px) {
+  .mail-index {
+    grid-template-columns: 1fr;
+  }
+
+  .mail-index > * {
+    grid-column: 2;
+  }
+
+  .mail-filter .btn-toggle-menu {
+    display: block;
+    margin-inline-start: 1em;
+  }
+
+  .folder-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+
+    background-color: rgb(255 255 255);
+
+    transform: translateX(-100%);
+    transition: transform 0.4s, box-shadow 0.4s;
+    z-index: 10;
+  }
+
+  .folder-list .btn-compose span {
+    display: none;
+  }
+
+  .folder-list .btn-compose::before {
+    margin-inline-end: 0;
+  }
+
+  .folder-list .folder-container .unread-count {
+    margin-inline: 3em 2em;
+  }
+
+  .folder-list.menu-open {
+    transform: translateX(0);
+    box-shadow: -4px 0px 20px rgb(0 0 0 / 30%);
+  }
+
+  .no-mails-msg {
+    width: 100vw;
+  }
+}
+
 @media (max-width: 540px) {
   .home-page {
     padding-block-start: 16em;
@@ -129,53 +217,28 @@
     font-size: 2em;
     font-family: RobotoBold, serif;
   }
-}
 
-@media (max-width: 750px) {
-  .mail-index {
+  .about {
     grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr auto auto;
+    grid-template-areas:
+      'title'
+      'txt'
+      'image'
+      'contact';
+
+    width: 90%;
+    row-gap: 4em;
+    margin-block-start: 3em;
   }
 
-  .mail-index > * {
-    grid-column: 2;
+  .about .about-img {
+    place-self: center;
+    width: 150px;
+    height: 150px;
   }
 
-  .mail-filter .btn-toggle-menu {
-    display: block;
-    margin-inline-start: 1em;
-  }
-
-  .folder-list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100dvh;
-
-    background-color: rgb(255 255 255);
-
-    transform: translateX(-100%);
-    transition: transform 0.4s, box-shadow 0.4s;
-    z-index: 10;
-  }
-
-  .folder-list .btn-compose span {
-    display: none;
-  }
-
-  .folder-list .btn-compose::before {
-    margin-inline-end: 0;
-  }
-
-  .folder-list .folder-container .unread-count {
-    margin-inline: 3em 2em;
-  }
-
-  .folder-list.menu-open {
-    transform: translateX(0);
-    box-shadow: -4px 0px 20px rgb(0 0 0 / 30%);
-  }
-
-  .no-mails-msg {
-    width: 100vw;
+  .about .personal-container {
+    place-self: center;
   }
 }

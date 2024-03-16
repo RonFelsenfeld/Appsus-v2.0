@@ -31,13 +31,56 @@
 
   background-color: var(--clr-gray1);
   font-size: 1.5em;
-  box-shadow: 0px 3px 7px rgba(147, 147, 147, 0.589);
+  box-shadow: 0px 1px 7px rgba(147, 147, 147, 0.589);
 }
 
 .mail-filter .filter-txt:focus {
   outline: none;
 }
 
-.mail-filter .filter-read {
+.mail-filter .unread-only {
   font-size: 1.5em;
+}
+
+.mail-filter .is-read-container {
+  gap: 0.5em;
+}
+
+.mail-filter .is-read-container .is-read-input {
+  display: none;
+}
+
+.mail-filter .is-read-container .is-read-input:checked + label {
+  background-color: var(--clr-blue1);
+}
+
+.mail-filter .is-read-container .is-read-input:checked + label::before {
+  transform: translateX(20px);
+}
+
+.mail-filter .is-read-container .is-read-label {
+  position: relative;
+  display: inline-block;
+
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+
+  background-color: #ccc;
+  box-shadow: 0px 3px 7px rgba(147, 147, 147, 0.589);
+
+  cursor: pointer;
+}
+
+.mail-filter .is-read-container .is-read-label::before {
+  position: absolute;
+  content: '';
+  inset: 2px 0 0 2px;
+
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  background-color: white;
+  transition: transform 0.3s;
 }

@@ -5,10 +5,10 @@
 /* Basics */
 @import './basics/base.css';
 @import './basics/helpers.css';
-@import './basics/layout.css';
 
 /* Views */
-@import './views/home.css';
+@import './views/Home.css';
+@import './views/About.css';
 
 /* Cmps */
 @import './cmps/UserMsg.css';

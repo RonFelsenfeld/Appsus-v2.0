@@ -1,7 +1,7 @@
-import { utilService } from '../services/util.service.js'
-
 const { useEffect, useRef } = React
 const { NavLink } = ReactRouterDOM
+
+import { utilService } from '../services/util.service.js'
 
 export function Home() {
   const logoRef = useRef()

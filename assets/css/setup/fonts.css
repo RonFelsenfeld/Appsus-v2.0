@@ -27,3 +27,8 @@
   font-family: faSolid;
   src: url(../../fonts/fa/fa-solid-900.ttf);
 }
+
+@font-face {
+  font-family: faBrands;
+  src: url(../../fonts/fa/fa-brands-400.ttf);
+}

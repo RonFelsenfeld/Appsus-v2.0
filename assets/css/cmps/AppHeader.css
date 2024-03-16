@@ -3,7 +3,7 @@
   font-size: 1.6em;
 
   background: var(--main-bg-color);
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid var(--clr-mail-border);
   font-family: RobotoRegular, serif;
 }
 
@@ -12,6 +12,7 @@
 }
 
 .app-header .main-nav {
+  flex-direction: row-reverse;
   gap: 1em;
 }
 
