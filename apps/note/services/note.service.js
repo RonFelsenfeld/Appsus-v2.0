@@ -20,11 +20,28 @@ export const noteService = {
 window.cs = noteService
 
 //param = filterBy = getDefaultFilter()
-function query() {
-  return storageService.query(NOTE_KEY).then(notes => {
-    // console.log(notes)
-    return notes
-  })
+function query(filterBy) {
+  console.log(filterBy)
+  return storageService.query(NOTE_KEY)
+    .then(notes => {
+      if (filterBy === 'NoteTxt') {
+        notes = notes.filter((note) => note.type === 'NoteTxt')
+      }
+      if (filterBy === 'NoteVideo') {
+        notes = notes.filter((note) => note.type === 'NoteVideo')
+
+      }
+      if (filterBy === 'NoteImg') {
+        notes = notes.filter((note) => note.type === 'NoteImg')
+
+      }
+      if (filterBy === 'NoteTodo') {
+        notes = notes.filter((note) => note.type === 'NoteTodo')
+
+      }
+      // console.log(notes)
+      return notes
+    })
 }
 
 function get(noteId) {

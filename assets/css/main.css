@@ -38,6 +38,7 @@
 @import './apps/note/cmps/add-note.css';
 @import './apps/note/cmps/color-input.css';
 @import './apps/note/cmps/note-edit.css';
+@import './apps/note/cmps/note-filter.css';
 @import './apps/note/cmps/note-img.css';
 @import './apps/note/cmps/note-video.css';
 @import './apps/note/cmps/note-todos.css';

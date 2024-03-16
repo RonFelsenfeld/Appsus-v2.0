@@ -18,16 +18,22 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const { mailId } = useParams()
     const navigate = useNavigate()
+    const [filterBy, setFilterBy] = useState('')
+
 
     useEffect(() => {
         if (mailId) addMailAsNote()
         loadNotes()
-    }, [])
+    }, [filterBy])
 
     function loadNotes() {
-        noteService.query().then(notes => {
+        noteService.query(filterBy).then(notes => {
             setNotes(notes)
         })
+    }
+
+    function onSetFilter(newFilter) {
+        setFilterBy(newFilter)
     }
 
     function addMailAsNote() {
@@ -102,7 +108,10 @@ export function NoteIndex() {
     if (!notes) return <div className="loading-msg">no notes to show..</div>
     return (
         <div className="notes-index">
-            {/* <NoteFilter /> */}
+            <NoteFilter
+            onSetFilter={onSetFilter}
+            filterBy={filterBy}
+             />
             <AddNote addNote={addNote} />
             {
                 <ul className="note-index preview clean-list flex wrap space-around">

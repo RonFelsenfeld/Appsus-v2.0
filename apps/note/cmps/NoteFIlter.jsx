@@ -1,14 +1,21 @@
+const { useState } = React
 
 
-export function NoteFilter(){
+export function NoteFilter({onSetFilter,filterBy}) {
+    const [filterByToEdit, setFilterByToEdit] = useState('')
 
+    function handleFilterChange({target}){
+        onSetFilter(target.value)
+    }
 
-    return <form>
-        <button>s</button>
-        <lable htmlFor="search">Search</lable>
-        <input type="search"
-        id="search"
-        name="title"
-        placeholde="Search note..." />
+    return <form className="filter-select">
+        <label htmlFor="filter">Filter by: </label>
+        <select onChange={handleFilterChange} name="filter" id="filter">
+            <option value="">ALL</option>
+            <option value="NoteTxt">Text</option>
+            <option value="NoteVideo">Video</option>
+            <option value="NoteImg">Image</option>
+            <option value="NoteTodo">Todo</option>
+        </select>
     </form>
 }
