@@ -1,4 +1,25 @@
 @media (max-width: 540px) {
+  .home-page {
+    padding-block-start: 16em;
+  }
+
+  .home-page .img-logo {
+    width: 400px;
+  }
+
+  .home-page .main-title {
+    font-size: 2.1em;
+  }
+
+  .home-page .btn-container {
+    gap: 1em;
+  }
+
+  .home-page .btn {
+    width: 300px;
+    font-size: 2.5em;
+  }
+
   .app-header .logo {
     width: 100px;
   }

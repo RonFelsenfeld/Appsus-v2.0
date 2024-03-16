@@ -3,12 +3,6 @@
   grid-template-columns: 256px 1fr 10px;
 }
 
-.loading-msg {
-  font-size: 3em;
-  margin-inline-start: 1em;
-  margin-block-start: 1em;
-}
-
 .mail-index .main-screen {
   position: fixed;
   inset: 0;

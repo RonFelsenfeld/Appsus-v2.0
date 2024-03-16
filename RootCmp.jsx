@@ -15,8 +15,9 @@ import { MailDetails } from './apps/mail/cmps/MailDetails.jsx'
 export function App() {
   return (
     <Router>
+      <AppHeader />
+
       <main className="app">
-        <AppHeader />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

@@ -49,3 +49,9 @@ textarea {
   resize: none;
   font-family: inherit;
 }
+
+.loading-msg {
+  font-size: 3em;
+  margin-inline-start: 1em;
+  margin-block-start: 1em;
+}
