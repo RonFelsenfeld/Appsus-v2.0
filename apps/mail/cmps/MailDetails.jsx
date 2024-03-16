@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-const { useParams } = ReactRouter
+const { useParams, useNavigate } = ReactRouter
 const { Link, useOutletContext } = ReactRouterDOM
 
 import { emailService } from '../services/mail.service.js'
@@ -7,6 +7,7 @@ import { utilService } from '../../../services/util.service.js'
 
 export function MailDetails() {
   const [mail, setMail] = useState(null)
+  const navigate = useNavigate()
   const [onRemoveMail, onToggleStarred] = useOutletContext()
   const { mailId } = useParams()
 
@@ -34,6 +35,10 @@ export function MailDetails() {
     return 'unstarred'
   }
 
+  function handleMailToNote() {
+    navigate(`/note/${mailId}`)
+  }
+
   if (!mail) return <div className="loading">loading details...</div>
   const { subject, body, to, from, sentAt } = mail
   return (
@@ -43,6 +48,12 @@ export function MailDetails() {
           className="btn btn-delete"
           title="Delete"
           onClick={() => onRemoveMail(mail)}
+        ></button>
+
+        <button
+          className="btn btn-note"
+          title="Save as note"
+          onClick={handleMailToNote}
         ></button>
 
         <button
