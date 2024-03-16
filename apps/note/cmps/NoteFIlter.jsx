@@ -8,8 +8,8 @@ export function NoteFilter({onSetFilter,filterBy}) {
         onSetFilter(target.value)
     }
 
-    return <form className="filter-select">
-        <label htmlFor="filter">Filter by: </label>
+    return <form className="filter-select flex justify-center align-center">
+        <label htmlFor="filter">Filter by  </label>
         <select onChange={handleFilterChange} name="filter" id="filter">
             <option value="">ALL</option>
             <option value="NoteTxt">Text</option>

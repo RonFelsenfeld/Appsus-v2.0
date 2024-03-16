@@ -1,7 +1,17 @@
 .filter-select{
-    margin-inline-start: 30em;
+    gap: 1em;
 }
-
 .filter-select label{
     font-size: 1.5em;
+    color: var(--clr-gray2);
+}
+
+.filter-select select{
+    width: 6em;
+    background-color: var(--clr-gray1);
+    color: var(--clr-gray2);
+    border: none;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: -2px 3px 4px rgba(0, 0, 0, .3);
 }
