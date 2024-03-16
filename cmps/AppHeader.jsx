@@ -2,22 +2,23 @@ const { Link, NavLink } = ReactRouterDOM
 
 export function AppHeader() {
   return (
-    <header className="app-header flex space-between">
+    <header className="app-header flex align-center space-between">
       <Link to="/">
-        <h3>LOGO</h3>
+        <img src="assets/img/logo.png" alt="logo" className="logo" />
       </Link>
+
       <nav className="main-nav flex">
         <NavLink to="/">
-          <button className="btn-nav btn-home"></button>
+          <button title="Home" className="btn-nav btn-home"></button>
         </NavLink>
         <NavLink to="/about">
-          <button className="btn-nav btn-about"></button>
+          <button title="About" className="btn-nav btn-about"></button>
         </NavLink>
         <NavLink to="/mail">
-          <button className="btn-nav btn-mail"></button>
+          <button title="Mail" className="btn-nav btn-mail"></button>
         </NavLink>
         <NavLink to="/note">
-          <button className="btn-nav btn-note"></button>
+          <button title="Note" className="btn-nav btn-note"></button>
         </NavLink>
       </nav>
     </header>

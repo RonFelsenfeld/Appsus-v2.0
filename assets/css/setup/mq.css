@@ -1,16 +1,11 @@
 @media (max-width: 480px) {
-  .mail-compose {
-    position: absolute;
-    inset: auto 50% 0 auto;
-    transform: translateX(50%);
-  }
-
-  .mail-compose form textarea {
-    width: 90vw;
-  }
 }
 
 @media (max-width: 540px) {
+  .app-header .logo {
+    width: 100px;
+  }
+
   .add-note-form input {
     width: 20em;
   }
@@ -56,8 +51,8 @@
   }
 
   .mail-details {
-    grid-template-columns: 60px 1fr 100px;
-    grid-template-rows: repeat(3, 50px) 1fr;
+    grid-template-columns: 35px 1fr 50px;
+    grid-template-rows: 80px repeat(2, 50px) 1fr;
     grid-template-areas:
       'image from actions'
       'image to time'
@@ -65,14 +60,55 @@
       'body body body';
   }
 
+  .mail-details .btn::before {
+    font-family: faSolid;
+    font-size: 1.3em;
+  }
+
   .mail-details .user-img {
     grid-area: image;
-    transform: translateY(0);
     place-self: center;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translateY(0);
   }
 
   .mail-details .mail-subject {
     align-self: center;
+    font-family: RobotoBold, serif;
+  }
+
+  .mail-compose {
+    inset: 0;
+    margin: 1em;
+  }
+
+  .mail-compose .new-mail-header .title {
+    font-size: 3em;
+  }
+
+  .mail-compose .new-mail-header .btn-close {
+    font-size: 2em;
+  }
+
+  .mail-compose form {
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .mail-compose form input {
+    font-size: 2em;
+  }
+
+  .mail-compose form textarea {
+    flex-grow: 1;
+  }
+
+  .mail-compose .btn-submit {
+    width: 200px;
+    font-size: 2em;
     font-family: RobotoBold, serif;
   }
 }
@@ -119,5 +155,9 @@
   .folder-list.menu-open {
     transform: translateX(0);
     box-shadow: -4px 0px 20px rgb(0 0 0 / 30%);
+  }
+
+  .no-mails-msg {
+    width: 100vw;
   }
 }

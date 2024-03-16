@@ -7,7 +7,7 @@ import { utilService } from '../../../services/util.service.js'
 
 export function MailDetails() {
   const [mail, setMail] = useState(null)
-  const [onRemoveMail] = useOutletContext()
+  const [onRemoveMail, onToggleStarred] = useOutletContext()
   const { mailId } = useParams()
 
   useEffect(() => {
@@ -29,15 +29,26 @@ export function MailDetails() {
       })
   }
 
+  function isStarredClass(mail) {
+    if (mail.isStarred) return 'starred'
+    return 'unstarred'
+  }
+
   if (!mail) return <div className="loading">loading details...</div>
   const { subject, body, to, from, sentAt } = mail
   return (
     <section className="mail-details">
-      <div className="action-container">
+      <div className="action-container flex">
         <button
           className="btn btn-delete"
           title="Delete"
           onClick={() => onRemoveMail(mail)}
+        ></button>
+
+        <button
+          className={`btn ${isStarredClass(mail)}`}
+          title="Starred"
+          onClick={() => onToggleStarred(mail)}
         ></button>
 
         <Link to="/mail">

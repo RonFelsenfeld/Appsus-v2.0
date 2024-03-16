@@ -198,7 +198,7 @@ export function MailIndex() {
         />
       )}
 
-      <Outlet context={[onRemoveMail]}></Outlet>
+      <Outlet context={[onRemoveMail, onToggleStarred]}></Outlet>
     </section>
   )
 }

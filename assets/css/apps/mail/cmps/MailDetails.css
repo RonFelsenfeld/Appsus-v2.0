@@ -13,14 +13,13 @@
 
   background-color: var(--secondary-base);
   padding: 1.5em;
-  min-height: 100dvh;
+  height: calc(100dvh - 123px);
 }
 
 .mail-details .btn {
-  padding: 1em;
+  padding: 0.5em;
   border: none;
   border-radius: 50%;
-  margin-block-end: 1em;
 
   background-color: transparent;
 }
@@ -46,7 +45,18 @@
   content: '\f1f8';
 }
 
+.mail-details .btn.unstarred::before {
+  font-family: faRegular;
+  content: '\f005';
+}
+
+.mail-details .btn.starred::before {
+  content: '\f005';
+  color: #ffd43b;
+}
+
 .mail-details .action-container {
+  gap: 0.5em;
   grid-area: actions;
   justify-self: end;
   align-self: start;
@@ -86,7 +96,7 @@
 
 .mail-details .mail-sent-at {
   grid-area: time;
-  justify-self: center;
+  justify-self: end;
 
   font-size: 1.5em;
 }
@@ -96,6 +106,7 @@
   align-self: start;
 
   font-size: 2em;
+  text-align: justify;
 }
 
 .loading {

@@ -1,6 +1,6 @@
 .mail-compose {
   position: fixed;
-  inset: auto 1em 0 auto;
+  inset: auto 1em 1em auto;
 
   background-color: var(--secondary-base);
 

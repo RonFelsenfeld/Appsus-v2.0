@@ -1,5 +1,5 @@
 .app-header {
-  padding: 20px 0;
+  padding: 1em;
   font-size: 1.6em;
 
   background: var(--main-bg-color);
@@ -7,9 +7,12 @@
   font-family: RobotoRegular, serif;
 }
 
+.app-header .logo {
+  width: 150px;
+}
+
 .app-header .main-nav {
   gap: 1em;
-  margin-inline-end: 1em;
 }
 
 .app-header .main-nav .btn-nav {
