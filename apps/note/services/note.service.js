@@ -113,7 +113,7 @@ function getEmptyTodosNote() {
     type: 'NoteTodo',
     isPinned: false,
     style: {
-      backgroundColor: '#f6f8fc',
+      backgroundColor: '#E6E6FA',
     },
     info: {
       title: '',

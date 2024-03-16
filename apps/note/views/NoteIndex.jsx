@@ -99,7 +99,7 @@ export function NoteIndex() {
             .catch(err => showErrorMsg('could not duplicate'))
     }
 
-    if (!notes) return <div>no notes to show..</div>
+    if (!notes) return <div className="loading-msg">no notes to show..</div>
     return (
         <div className="notes-index">
             {/* <NoteFilter /> */}
