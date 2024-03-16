@@ -1,32 +1,33 @@
-.add-note-form input{
+.add-note-form input {
     width: 25em;
-    box-shadow: -2px 3px 4px rgba(0,0,0,.3);
-    
+    box-shadow: -2px 3px 4px rgba(0, 0, 0, .3);
+
     padding: 1em;
     border: none;
     border-radius: 0.8em;
-    
+
     background-color: var(--clr-gray1);
     font-size: 1.5em;
 }
 
-.add-note-form{
+.add-note-form {
     align-items: center;
 }
 
-.add-note-btn{
+.add-note-btn {
     padding: 1em;
     background-color: transparent;
-    border:none;
-    transition:all .2s
+    border: none;
+    transition: all .2s
 }
-.add-note-btn:hover{
-    background-color:var(--clr-yellow1);
+
+.add-note-btn:hover {
+    background-color: var(--clr-yellow1);
     border-radius: 1em;
 }
 
-.type-selector{
-    box-shadow: -2px 3px 4px rgba(0,0,0,.3);
+.type-selector {
+    box-shadow: -2px 3px 4px rgba(0, 0, 0, .3);
     margin-top: 1em;
     background-color: var(--clr-gray1);
     border: none;
@@ -35,22 +36,28 @@
     width: 20em;
 }
 
-.type-selector a{
+.type-selector a {
     cursor: pointer;
 }
 
-.type-selector a:hover{
+.type-selector a:hover {
     border: 1px solid black;
 }
 
-.type-selector button{
+
+.type-selector button {
     padding: 1em;
     background-color: transparent;
-    border:none;
-    transition:all .2s
+    border: none;
+    transition: all .2s
 }
-.type-selector button:hover{
-    background-color:var(--clr-yellow1);
+
+.type-selector button:hover {
+    background-color: var(--clr-yellow1);
+    border-radius: 1em;
+}
+.type-selector button .active {
+    background-color: var(--clr-yellow1);
     border-radius: 1em;
 }
 
